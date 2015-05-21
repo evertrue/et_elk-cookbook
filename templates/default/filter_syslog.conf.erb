@@ -1,0 +1,7 @@
+filter {
+  if [type] == "syslog" {
+    grok {
+      match => { "message" => "%{SYSLOG5424LINE}" }
+    }
+  }
+}
