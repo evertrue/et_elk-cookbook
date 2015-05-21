@@ -12,5 +12,8 @@ platforms:
 suites:
   - name: default
     run_list:
+      - recipe[apt]
       - recipe[elk::default]
     attributes:
+      elk_forwarder:
+        mocking: true
