@@ -1,0 +1,20 @@
+filter {
+  if [type] == "passenger_rails_app" {
+    multiline {
+      pattern => "^Started"
+      negate => true
+      what => "previous"
+    }
+
+    grok {
+      match => "%{RAILS_APP}"
+    }
+
+    mutate {
+      gsub => [
+        # break the data field back into separate lines for clarity
+        "data", "I, \[", "\nI, \["
+      ]
+    }
+  }
+}

@@ -27,4 +27,3 @@ include_recipe 'elk_logstash::configure'
 include_recipe 'elk_kibana'
 
 include_recipe 'elk::client'
-
