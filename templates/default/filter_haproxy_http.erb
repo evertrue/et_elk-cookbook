@@ -1,0 +1,7 @@
+filter {
+  if [type] == "haproxy_http" {
+    grok {
+      match => ["message", "%{HAPROXYHTTP}"]
+    }
+  }
+}
