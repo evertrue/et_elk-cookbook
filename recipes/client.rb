@@ -14,11 +14,4 @@ end
 
 include_recipe 'elk_forwarder::certs'
 
-elk_forwarder_log 'syslog' do
-  paths [
-    '/var/log/syslog'
-  ]
-  fields type: :syslog
-end
-
 include_recipe 'elk_forwarder::default'
