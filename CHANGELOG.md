@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.0.2] - 2015-06-15
+### Added
+- A Fixup to wipe the elk_forwarder namespace if ['elk_forwarder']['config']['files'] is an array not the new format which is a hash
+
+## [1.0.1] - 2015-06-15
+### Changed
+- Updated to elk_forwarder v2.0
+
 ## [1.0.0] - 2015-06-15
 ### Added
 - Rails App log filter and pattern
