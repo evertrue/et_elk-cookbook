@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.0.5] - 2015-06-17
+### Changed
+- Loosen format of view and activerecord timing.
+
 ## [1.0.4] - 2015-06-17
 ### Changed
 - The multiline filter's match pattern to accomodate logs with timestamp prefixed lines
