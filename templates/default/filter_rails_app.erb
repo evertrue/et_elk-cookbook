@@ -1,7 +1,7 @@
 filter {
   if [type] == "rails_app" {
     multiline {
-      pattern => "^Started"
+      pattern => " Started "
       negate => true
       what => "previous"
     }
