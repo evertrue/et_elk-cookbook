@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.0.3] - 2015-06-17
+### Added
+- SSL Certificate discovery attributes to find the CA cert
+
+### Changed
+- Fixed the rails app filter
+
 ## [1.0.2] - 2015-06-15
 ### Added
 - A Fixup to wipe the elk_forwarder namespace if ['elk_forwarder']['config']['files'] is an array not the new format which is a hash
