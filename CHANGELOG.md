@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.0.4] - 2015-06-17
+### Changed
+- The multiline filter's match pattern to accomodate logs with timestamp prefixed lines
+
 ## [1.0.3] - 2015-06-17
 ### Added
 - SSL Certificate discovery attributes to find the CA cert
