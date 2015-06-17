@@ -1,5 +1,5 @@
 filter {
-  if [type] == "passenger_rails_app" {
+  if [type] == "rails_app" {
     multiline {
       pattern => "^Started"
       negate => true
@@ -7,7 +7,9 @@ filter {
     }
 
     grok {
-      match => "%{RAILS_APP}"
+      match => {
+        "message" => "%{RAILS_APP}"
+      }
     }
 
     mutate {
