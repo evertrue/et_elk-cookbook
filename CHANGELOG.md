@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.0.6] - 2015-06-18
+### Added
+- Add HAPROXY config
+
 ## [1.0.5] - 2015-06-17
 ### Changed
 - Loosen format of view and activerecord timing.
