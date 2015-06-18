@@ -19,7 +19,7 @@ logstash_config 'haproxy http filter' do
 end
 
 logstash_pattern 'evertrue patterns' do
-  templates_cookbook 'elk_logstash'
+  templates_cookbook 'elk'
   templates 'evertrue_patterns' => 'evertrue_patterns.erb'
   instance 'server'
   variables node['elk_logstash']['server']
