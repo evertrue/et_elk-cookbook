@@ -1,7 +1,7 @@
 filter {
   if [type] == "haproxy_http" {
     grok {
-      match => ["message", "%{HAPROXYHTTP}"]
+      match => ["message", "%{ET_SYSLOGBASE} +%{ET_HAPROXYHTTP_CONTENT}"]
     }
   }
 }
