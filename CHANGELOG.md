@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.0.7] - 2015-06-18
+### Added
+- Fixes templates cookbook for evertrue patterns
+
 ## [1.0.6] - 2015-06-18
 ### Added
 - Add HAPROXY config
