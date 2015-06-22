@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.1.0] - 2015-06-22
+### Added
+- NGINX log parsing configuration
+
 ## [1.0.7] - 2015-06-18
 ### Added
 - Fixes templates cookbook for evertrue patterns
