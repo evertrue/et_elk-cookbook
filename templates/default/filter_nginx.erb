@@ -1,0 +1,13 @@
+filter {
+  if [type] == "nginx_access" {
+    grok {
+      match => ["message", "%{ET_NGINXACCESS}"]
+    }
+  }
+
+  if [type] == "nginx_error" {
+    grok {
+      match => ["message", "%{ET_NGINXERROR}"]
+    }
+  }
+}

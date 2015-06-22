@@ -18,6 +18,13 @@ logstash_config 'haproxy http filter' do
   variables node['elk_logstash']['server']
 end
 
+logstash_config 'nginx filters' do
+  templates_cookbook 'elk'
+  templates 'filter_nginx' => 'filter_nginx.erb'
+  instance 'server'
+  variables node['elk_logstash']['server']
+end
+
 logstash_pattern 'evertrue patterns' do
   templates_cookbook 'elk'
   templates 'evertrue_patterns' => 'evertrue_patterns.erb'
