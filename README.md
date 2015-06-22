@@ -1,5 +1,7 @@
 # elk [![Build Status](https://travis-ci.org/evertrue/elk-cookbook.svg)](https://travis-ci.org/evertrue/elk-cookbook)
 
+![ELK](http://www.bogotobogo.com/Hadoop/ELK/images/ELK_Icon.png)
+
 This cookbook is the top level wrapper for the EverTrue ELK cookbook ecosystem
 
 # Requirements
