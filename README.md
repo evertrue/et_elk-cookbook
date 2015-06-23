@@ -17,6 +17,13 @@ This cookbook is the top level wrapper for the EverTrue ELK cookbook ecosystem
 
 # Recipes
 
+## default
+
+Installs everything on the node and configures it to be a central log server that recieves logs from the clients
+
+1. Install Elasticsearch, Logstash, and kibana
+2. Configure logstash with inputs and outputs using `elk::server`
+
 ## client
 
 Configures the node to be a client that ships logs to the central logstash server
@@ -26,34 +33,21 @@ Configures the node to be a client that ships logs to the central logstash serve
     * Central logstash servers are discovered via the `node['elk']['logstash_discovery']` attribute
     * To Disable auto-discovery simply set `node['elk']['logstash_discovery']` to `''`
 
-## agent
-
-Configures the node to be a log agent (logstash server) that recieves logs from the clients
-
-1. Install logstash via `elk_logstash`
-2. Configure logstash with some basic inputs and outputs
-    * The lumberjack input is configured to listen
-    * The elasticsearch output is configured using the `node['elk']['elasticsearch_discovery']` attribute
-        * To Disable auto-discovery simply set `node['elk']['elasticsearch_discovery']` to `''`
-
-## elasticsearch
-
-Installs elasticsearch
-
 # Usage
 
-Installs elasticsearch on the node
 
-1. Install logstash via `elk_elasticsearch`
-
-```
+```ruby
 depends 'elk', '~> 1.0'
 ```
 
-```
+```ruby
+# To install and configure the forwarder
+
 include_recipe 'elk::client'
-include_recipe 'elk::agent'
-include_recipe 'elk::elasticsearch'
+
+# To install everything on the node
+
+include_recipe 'elk::default'
 ```
 
 ## Contributing
