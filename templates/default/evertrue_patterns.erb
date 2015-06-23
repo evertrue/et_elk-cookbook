@@ -13,4 +13,4 @@ ET_NGINX_DATE_TIME %{YEAR}/%{MONTHNUM}/%{MONTHDAY} %{TIME}
 ET_NGINXACCESS %{IPORHOST:clientip} %{ET_NGINX_USER:ident} %{ET_NGINX_USER:auth} \[%{HTTPDATE:timestamp}\] "%{WORD:verb} %{URIPATHPARAM:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:response} (?:%{NUMBER:bytes}|-) (?:"(?:%{URI:referrer}|-)"|%{QS:referrer}) %{QS:agent}
 
 # Parses an NGINX Error Log
-ET_NGINXERROR ^%{ET_NGINX_DATE_TIME:timestamp}  \[%{LOGLEVEL}\] %{POSINT:pid}#%{NUMBER}: \*%{NUMBER} %{GREEDYDATA:msg}
+ET_NGINXERROR %{ET_NGINX_DATE_TIME:timestamp} \[%{WORD:level}\] %{POSINT:pid}#%{NUMBER}: \*%{NUMBER} %{GREEDYDATA:message}
