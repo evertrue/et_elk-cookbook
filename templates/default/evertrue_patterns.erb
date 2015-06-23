@@ -14,3 +14,13 @@ ET_NGINXACCESS %{IPORHOST:clientip} %{ET_NGINX_USER:ident} %{ET_NGINX_USER:auth}
 
 # Parses an NGINX Error Log
 ET_NGINXERROR %{ET_NGINX_DATE_TIME:timestamp} \[%{WORD:level}\] %{POSINT:pid}#%{NUMBER}: \*%{NUMBER} %{GREEDYDATA:message}
+
+# Parses Mesos Logs to the best of it's ability (Mesos Logs are gross!)
+ET_MESOS_TIMESTAMP %{MONTHNUM:month}%{MONTHDAY:day} %{TIME:time}
+
+ET_MESOS %{DATA:level_short}%{ET_MESOS_TIMESTAMP:mesos_timestamp} %{POSINT:thread} %{DATA:file}:%{NUMBER:line}] %{GREEDYDATA:message}
+
+# Singularity Patterns
+ET_SINGULARITY_TIMESTAMP %{TIMESTAMP_ISO8601},%{POSINT}
+
+ET_SINGULARITY %{WORD:level} +\[%{ET_SINGULARITY_TIMESTAMP:timestamp}\] %{DATA:class}: %{GREEDYDATA:message}

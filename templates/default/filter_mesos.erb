@@ -1,0 +1,33 @@
+filter {
+  if [type] == "mesos_slave" || [type] == "mesos_master" {
+    grok {
+      match => ["message", "%{ET_MESOS}"]
+    }
+
+    date {
+      match => ["mesos_timestamp", "MMdd HH:mm:ss.S"]
+      remove_field => [ "mesos_timestamp" ]
+    }
+
+    alter {
+      condrewrite => [
+        "level_short", "I", "INFO",
+        "level_short", "W", "WARN",
+        "level_short", "E", "ERROR",
+        "level_short", "F", "FATAL"
+      ]
+      remove_field => [ "level_short" ]
+    }
+  }
+
+  if [type] == "singularity" {
+    grok {
+      match => ["message", "%{ET_SINGULARITY}"]
+    }
+
+    date {
+      match => ["timestamp", "YYYY-MM-dd HH:mm:ss,SSS", "YYYY-MM-dd HH:mm:ss,S", ISO8601"]
+      remove_field => [ "timestamp" ]
+    }
+  }
+}
