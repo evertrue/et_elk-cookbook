@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.2.0] - 2015-06-24
+### Added
+- Test Kitchen role and attributes to converge a working All in One box
+- Initial Patterns and Filters for Mesos and Singlularity
+- Fauxhai to mock ohai data
+- date filter to NGINX logs
+
 ## [1.1.1] - 2015-06-23
 ### Changed
 - Updated the ET_NGINXERROR pattern to properly match error logs
