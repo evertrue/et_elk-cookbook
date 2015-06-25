@@ -25,6 +25,13 @@ logstash_config 'nginx filters' do
   variables node['elk_logstash']['server']
 end
 
+logstash_config 'mesos filters' do
+  templates_cookbook 'elk'
+  templates 'filter_mesos' => 'filter_mesos.erb'
+  instance 'server'
+  variables node['elk_logstash']['server']
+end
+
 logstash_pattern 'evertrue patterns' do
   templates_cookbook 'elk'
   templates 'evertrue_patterns' => 'evertrue_patterns.erb'
