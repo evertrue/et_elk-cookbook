@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.2.2] - 2015-06-25
+### Added
+- Filters to parse and remove the `timestamp` field for haproxy and rails apps into `@timestamp`
+
 ## [1.2.1] - 2015-06-25
 ### Changed
 - Add logstash_config resource for mesos filters
