@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.2.1] - 2015-06-25
+### Changed
+- Add logstash_config resource for mesos filters
+
 ## [1.2.0] - 2015-06-24
 ### Added
 - Test Kitchen role and attributes to converge a working All in One box
