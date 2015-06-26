@@ -5,6 +5,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.2.5] - 2015-06-26
+### Added
+- A common filter to perform a geoip lookup if a `client_ip` field is present
+- Instructions and guidlines for adding new patterns to evertrue_patterns
+
+### Changed
+- The raw timestamp field from `mesos_timestamp` to just `timestamp` as it is the primary time for that log
+- Removed year, month, day, hour, minute, second, and timezone fields as they aren't useful when the timestamp is parsed into a searchable date
+- Major cleanup of the schema.  Lots of renaming of fields.
+
 ## [1.2.4] - 2015-06-26
 ### Changed
 - Quoted ISO8601 to make configuration valid
