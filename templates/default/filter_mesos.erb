@@ -5,8 +5,8 @@ filter {
     }
 
     date {
-      match => ["mesos_timestamp", "MMdd HH:mm:ss.S"]
-      remove_field => [ "mesos_timestamp" ]
+      match => ["timestamp", "MMdd HH:mm:ss.S"]
+      remove_field => [ "timestamp" ]
     }
 
     alter {
