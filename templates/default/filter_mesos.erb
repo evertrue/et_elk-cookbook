@@ -1,5 +1,5 @@
 filter {
-  if [type] == "mesos_slave" || [type] == "mesos_master" {
+  if [type] == "mesos_slave" or [type] == "mesos_master" {
     grok {
       match => ["message", "%{ET_MESOS}"]
     }
