@@ -1,7 +1,8 @@
-logstash_pattern 'rails' do
+logstash_config 'common filter' do
   templates_cookbook 'elk'
+  templates 'filter_000_common' => 'filter_common.erb'
   instance 'server'
-  templates 'pattern_rails_app' => 'pattern_rails_app.erb'
+  variables node['elk_logstash']['server']
 end
 
 logstash_config 'rails app filter' do
