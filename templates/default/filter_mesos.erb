@@ -26,7 +26,7 @@ filter {
     }
 
     date {
-      match => ["timestamp", "YYYY-MM-dd HH:mm:ss,SSS", "YYYY-MM-dd HH:mm:ss,S", ISO8601"]
+      match => ["timestamp", "YYYY-MM-dd HH:mm:ss,SSS", "YYYY-MM-dd HH:mm:ss,S", "ISO8601"]
       remove_field => [ "timestamp" ]
     }
   }
