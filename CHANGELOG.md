@@ -5,9 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.2.3] - 2015-06-26
+### Changed
+- Used `or` instead of `||` in mesos slave filter
+
 ## [1.2.2] - 2015-06-25
 ### Added
-- Filters to parse and remove the `timestamp` field for haproxy and rails apps into `@timestamp`
+- Filters to parse and remove the `timestamp` fied for haproxy and rails apps into `@timestamp`
 
 ## [1.2.1] - 2015-06-25
 ### Changed
