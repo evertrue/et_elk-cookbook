@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.2.4] - 2015-06-26
+### Changed
+- Quoted ISO8601 to make configuration valid
+
 ## [1.2.3] - 2015-06-26
 ### Changed
 - Used `or` instead of `||` in mesos slave filter
