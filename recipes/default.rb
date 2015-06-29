@@ -22,8 +22,6 @@ include_recipe 'elk_logstash::certs'
 
 include_recipe 'elk_logstash'
 
-include_recipe 'elk_logstash::configure'
-
 include_recipe 'elk_kibana'
 
 include_recipe 'elk::client'

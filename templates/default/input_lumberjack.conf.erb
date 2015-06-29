@@ -1,0 +1,18 @@
+# http://logstash.net/docs/1.4.2/inputs/lumberjack
+input {
+  lumberjack {
+    add_field => {
+<% @lumberjack['add_field'].each do |key, val| %>
+      "<%= key %>" => "<%= val %>"
+<% end %>
+    }
+    codec => <%= @lumberjack['codec'] %>
+    host => "<%= @lumberjack['host'] %>"
+    port => "<%= @lumberjack['port'] %>"
+    ssl_certificate => "<%= @lumberjack['ssl certificate'] %>"
+    ssl_key => "<%= @lumberjack['ssl key'] %>"
+    # ssl_key_passphrase => ... # password (optional)
+    # tags => ... # array (optional)
+    # type => ... # string (optional)
+  }
+}

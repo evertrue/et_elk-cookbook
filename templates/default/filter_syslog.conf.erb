@@ -1,0 +1,9 @@
+filter {
+  if [type] == "syslog" {
+    grok {
+      match => {
+        "message" => "%{ET_SYSLOGBASE} +%{GREEDYDATA:message}"
+      }
+    }
+  }
+}
