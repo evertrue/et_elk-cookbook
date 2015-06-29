@@ -13,7 +13,7 @@ end
 ############
 logstash_config 'lumberjack input' do
   templates_cookbook 'elk'
-  templates 'input_lumberjack' => 'input_lumberjack.conf.erb'
+  templates 'input_lumberjack' => 'input_lumberjack.erb'
   instance 'server'
   variables node['elk']['server']
 end
@@ -30,7 +30,7 @@ end
 
 logstash_config 'syslog filter' do
   templates_cookbook 'elk'
-  templates 'filter_syslog' => 'filter_syslog.conf.erb'
+  templates 'filter_syslog' => 'filter_syslog.erb'
   instance 'server'
   variables node['elk']['server']
 end
@@ -68,7 +68,7 @@ end
 ############
 logstash_config 'elasticsearch output' do
   templates_cookbook 'elk'
-  templates 'output_elasticsearch' => 'output_elasticsearch.conf.erb'
+  templates 'output_elasticsearch' => 'output_elasticsearch.erb'
   instance 'server'
   variables node['elk']['server']
 end
