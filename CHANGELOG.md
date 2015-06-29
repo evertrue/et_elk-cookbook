@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.3.0] - 2015-06-29
+### Added
+- The inputs, outputs, and syslog filter moved from the `elk_logstash` cookbook
+
 ## [1.2.5] - 2015-06-26
 ### Added
 - A common filter to perform a geoip lookup if a `client_ip` field is present
@@ -89,8 +93,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial Release
 
-[unreleased]: https://github.com/evertrue/elk-cookbook/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/evertrue/elk-cookbook/compare/v1.1.0...v1.1.1
+
+
+[unreleased]: https://github.com/evertrue/elk-cookbook/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/evertrue/elk-cookbook/compare/v1.2.5...v1.3.0
+[1.2.5]: https://github.com/evertrue/elk-cookbook/compare/v1.2.4...v1.2.5
+[1.2.4]: https://github.com/evertrue/elk-cookbook/compare/v1.2.3...v1.2.4
+[1.2.3]: https://github.com/evertrue/elk-cookbook/compare/v1.2.2...v1.2.3
+[1.2.2]: https://github.com/evertrue/elk-cookbook/compare/v1.2.1...v1.2.2
+[1.2.1]: https://github.com/evertrue/elk-cookbook/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/evertrue/elk-cookbook/compare/v1.1.1...v1.2.0
+[1.1.1]: https://github.com/evertrue/elk-cookbook/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/evertrue/elk-cookbook/compare/v1.0.7...v1.1.0
 [1.0.7]: https://github.com/evertrue/elk-cookbook/compare/v1.0.6...v1.0.7
 [1.0.6]: https://github.com/evertrue/elk-cookbook/compare/v1.0.5...v1.0.6
