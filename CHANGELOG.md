@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.3.2] - 2015-06-29
+### Changed
+- Removed .conf from template names
+
 ## [1.3.1] - 2015-06-29
 ### Changed
 - The namespace for logstash input, filter, and output configuration attributes from elk_logstash to just elk
