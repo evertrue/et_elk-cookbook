@@ -22,8 +22,17 @@ describe 'elk::default' do
 
   context 'When all attributes are default, on an unspecified platform' do
     let(:chef_run) do
-      runner =  ChefSpec::Runner.new(platform: 'ubuntu', version: '14.04') do |node|
+      runner =  ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '14.04') do |node, server|
         node.automatic['memory'] = { 'total' => '1692536kB' }
+        Dir.glob('test/integration/default/data_bags/**/*.json').each do |item|
+          bag = File.basename(File.dirname(item))
+          server.create_data_bag(bag, JSON.parse(File.read(item)))
+        end
+
+        Dir.glob('test/integration/default/nodes/*.json').each do |item|
+          name = File.basename(item, '.json')
+          server.create_node(name, JSON.parse(File.read(item)))
+        end
       end
       runner.converge(described_recipe)
     end
