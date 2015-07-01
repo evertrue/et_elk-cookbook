@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [1.3.3] - 2015-07-01
+### Changed
+- Added extra patterns to attempt to match mesos timestamps
+- Parse and Remove the `timestamp` field for syslog events
+- Add Multiline support for singularity
+
 ## [1.3.2] - 2015-06-29
 ### Changed
 - Removed .conf from template names
@@ -103,7 +109,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-[unreleased]: https://github.com/evertrue/elk-cookbook/compare/v1.3.0...HEAD
+[unreleased]: https://github.com/evertrue/elk-cookbook/compare/v1.3.3...HEAD
+[1.3.3]: https://github.com/evertrue/elk-cookbook/compare/v1.3.2...v1.3.3
+[1.3.2]: https://github.com/evertrue/elk-cookbook/compare/v1.3.1...v1.3.2
+[1.3.1]: https://github.com/evertrue/elk-cookbook/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/evertrue/elk-cookbook/compare/v1.2.5...v1.3.0
 [1.2.5]: https://github.com/evertrue/elk-cookbook/compare/v1.2.4...v1.2.5
 [1.2.4]: https://github.com/evertrue/elk-cookbook/compare/v1.2.3...v1.2.4
