@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+
+## [1.3.4] - 2015-07-01
+### Changed
+- Specify that the multiline filter should send lines to the previous event
+
 ## [1.3.3] - 2015-07-01
 ### Changed
 - Added extra patterns to attempt to match mesos timestamps
