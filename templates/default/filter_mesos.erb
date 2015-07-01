@@ -23,6 +23,7 @@ filter {
   if [type] == "singularity" {
     multiline {
       pattern => "^! "
+      what => "previous"
     }
 
     grok {
