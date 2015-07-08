@@ -59,4 +59,4 @@ ET_SINGULARITY %{WORD:level} +\[%{ET_SINGULARITY_TIMESTAMP:timestamp}\] %{DATA:c
 # Java Apps
 ET_JAVA_APP_TIMESTAMP %{MONTHNUM}/%{MONTHDAY}/%{YEAR} %{TIME}(,%{POSINT})?
 
-ET_JAVA_APP %{ET_JAVA_APP_TIMESTAMP:timestamp} \[%{DATA:thingidkabout}-%{DATA:thing2idkabout}\] %{DATA:level} %{DATA:class} +-%{GREEDYDATA:message}
+ET_JAVA_APP %{ET_JAVA_APP_TIMESTAMP:timestamp} \[%{DATA:tread}\] %{DATA:level} %{DATA:class} +-%{GREEDYDATA:message}
