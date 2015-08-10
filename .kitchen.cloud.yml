@@ -12,6 +12,7 @@ driver:
     ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
   tags:
     Name: elk-ubuntu-1404
+    Type: test
 
 provisioner:
   name: chef_zero
