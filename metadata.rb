@@ -8,7 +8,7 @@ version          '1.3.5'
 
 supports 'ubuntu', '>= 12.04'
 
-depends 'elk_elasticsearch'
-depends 'elk_logstash'
-depends 'elk_kibana'
+depends 'elk_elasticsearch', '~> 0.1'
+depends 'elk_logstash', '~> 0.0'
+depends 'elk_kibana', '~> 1.1'
 depends 'elk_forwarder', '~> 2.0'
