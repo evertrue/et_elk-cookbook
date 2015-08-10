@@ -29,6 +29,11 @@ suites:
     run_list:
       - recipe[apt]
       - recipe[elk::default]
+      - role[es_master]
     attributes:
-      apt:
-        compile_time_update: true
+      elk_forwarder:
+        mocking: true
+      elk_logstash:
+        server:
+          elasticsearch:
+            host: 127.0.0.1
