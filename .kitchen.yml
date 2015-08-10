@@ -22,3 +22,5 @@ suites:
         server:
           elasticsearch:
             host: 127.0.0.1
+      storage:
+        ephemeral_mounts: false
