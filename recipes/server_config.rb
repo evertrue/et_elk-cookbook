@@ -4,7 +4,6 @@
 logstash_pattern 'evertrue patterns' do
   templates 'evertrue_patterns' => 'evertrue_patterns.erb'
   instance 'server'
-  variables node['elk']['server']
 end
 
 ############
@@ -22,7 +21,6 @@ end
 logstash_config 'common filter' do
   templates 'filter_000_common' => 'filter_common.erb'
   instance 'server'
-  variables node['elk']['server']
 end
 
 [
@@ -36,7 +34,6 @@ end
   logstash_config "#{app} filter" do
     templates "filter_#{app}" => "filter_#{app}.erb"
     instance 'server'
-    variables node['elk']['server']
   end
 end
 
