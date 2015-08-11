@@ -15,7 +15,7 @@ logstash_config 'lumberjack input' do
   templates_cookbook 'elk'
   templates 'input_lumberjack' => 'input_lumberjack.erb'
   instance 'server'
-  variables node['elk']['server']
+  variables node['et_elk']['server']
 end
 
 ############
@@ -51,5 +51,5 @@ logstash_config 'elasticsearch output' do
   templates_cookbook 'elk'
   templates 'output_elasticsearch' => 'output_elasticsearch.erb'
   instance 'server'
-  variables node['elk']['server']
+  variables node['et_elk']['server']
 end
