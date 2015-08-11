@@ -1,10 +1,10 @@
 {
-  "name": "_default-elk-elasticsearch-1b",
-  "chef_environment": "_default",
+  "name": "dev-elk-forwarder-1b",
+  "chef_environment": "dev",
   "run_list": [
   ],
   "automatic": {
-    "fqdn": "_default-elk-elasticsearch-1b.priv.evertrue.com",
+    "fqdn": "dev-elk-forwarder-1b.priv.evertrue.com",
     "ipaddress": "127.0.0.1",
     "ec2": {
       "hostname":"ip-127-0-0-1.priv.evertrue.com",
@@ -14,7 +14,7 @@
       "userdata":null
     },
     "recipes": [
-      "elk_elasticsearch"
+      "elk_forwarder"
     ],
     "roles": [
     ]
