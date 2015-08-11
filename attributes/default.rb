@@ -11,3 +11,5 @@ set['elk_forwarder']['config']['files']['syslog']['fields']['type'] = 'syslog'
 set['elk_forwarder']['certs']['ca_data_bag'] = 'certificates'
 set['elk_forwarder']['certs']['ca_data_bag_item'] = 'logstash'
 set['elk_forwarder']['certs']['ca_data_bag_item_key'] = 'ca certificate'
+
+set['apt']['compile_time_update'] = true

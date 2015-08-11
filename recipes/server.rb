@@ -1,4 +1,5 @@
 [
+  'et_elk::default',
   'elk_elasticsearch',
   'elk_logstash::certs',
   'elk_logstash',

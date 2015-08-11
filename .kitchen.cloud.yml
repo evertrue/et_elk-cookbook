@@ -33,15 +33,7 @@ platforms:
 suites:
   - name: client
     run_list:
-      - recipe[apt]
-      - recipe[et_elk::default]
-    attributes:
-      apt:
-        compile_time_update: true
+      - recipe[et_elk::client]
   - name: server
     run_list:
-      - recipe[apt]
       - recipe[et_elk::server]
-    attributes:
-      apt:
-        compile_time_update: true

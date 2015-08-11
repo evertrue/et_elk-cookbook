@@ -26,5 +26,8 @@ end
 
 node.set['elk_forwarder']['config']['network']['servers'] = servers
 
-include_recipe 'elk_forwarder::certs'
-include_recipe 'elk_forwarder::default'
+[
+  'et_elk::default',
+  'elk_forwarder::certs',
+  'elk_forwarder::default'
+].each { |cb| include_recipe cb }
