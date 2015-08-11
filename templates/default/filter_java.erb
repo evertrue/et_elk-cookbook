@@ -2,8 +2,9 @@ filter {
   if [type] == "java_app" {
 
     multiline {
-      pattern => "^\s"
+      pattern => "^\d"
       what => "previous"
+      negate => true
     }
 
 
