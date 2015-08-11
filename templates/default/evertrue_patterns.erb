@@ -24,15 +24,13 @@
 # to this rule could be timezone as that can give geographical data for certian logs, but even then timezone is barely useful so I leave it out out the captured fields
 #
 
-RAILS_APP (?m)Started %{WORD:http_verb} "%{URIPATHPARAM:http_request}" for %{IPORHOST:client_ip} at (?<timestamp>%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{HOUR}:%{MINUTE}:%{SECOND} %{ISO8601_TIMEZONE})%{DATA}Processing by (?<controller>[^#]+)#(?<action>\w+) as (?<format>\S+)(?:\n  Parameters: %{DATA:params}\n)?%{DATA:data}Completed %{NUMBER:http_status_code}%{DATA:response_type} in %{NUMBER:totalms}ms ?(\(Views: %{NUMBER:viewms}ms)?(%{DATA}ActiveRecord: %{NUMBER:activerecordms}ms)?%{GREEDYDATA}
+RAILS_APP (?m)Started %{WORD:http_verb} "%{URIPATHPARAM:http_request}" for %{IPORHOST:client_ip} at %{TIMESTAMP_ISO8601:timestamp}%{DATA}Processing by (?<controller>[^#]+)#(?<action>\w+) as (?<format>\S+)(?:\n  Parameters: %{DATA:params}\n)?%{DATA:data}Completed %{NUMBER:http_status_code}%{DATA:response_type} in %{NUMBER:totalms}ms ?(\(Views: %{NUMBER:viewms}ms)?(%{DATA}ActiveRecord: %{NUMBER:activerecordms}ms)?%{GREEDYDATA}
 
 # The common syslog base for all syslog messages from EverTrue
 ET_SYSLOGBASE %{SYSLOG5424PRI}%{NONNEGINT:syslog5424_ver} +(?:%{TIMESTAMP_ISO8601:timestamp}|-) +(?:%{HOSTNAME:hostname}|-) +(-|%{SYSLOG5424PRINTASCII:syslog5424_app}) +(-|%{SYSLOG5424PRINTASCII:syslog5424_proc}) +(-|%{SYSLOG5424PRINTASCII:syslog5424_msgid}) +(?:%{SYSLOG5424SD:syslog5424_sd}|-|)
 
 # Parses the content of an HAPROXY log (the part after all the syslog stuff).  Pulled from the HAPROXY_HTTP pattern
-ET_HAPROXYTIME (?!<[0-9])%{HOUR}:%{MINUTE}(?::%{SECOND})(?![0-9])
-ET_HAPROXYDATE %{MONTHDAY}/%{MONTH}/%{YEAR}:%{ET_HAPROXYTIME}.%{INT}
-
+ET_HAPROXYDATE %{DATE}:%{TIME}
 ET_HAPROXYHTTP_CONTENT %{IP:client_ip}:%{INT:client_port} \[%{ET_HAPROXYDATE:accept_date}\] %{NOTSPACE:frontend_name} %{NOTSPACE:backend_name}/%{NOTSPACE:server_name} %{INT:time_request}/%{INT:time_queue}/%{INT:time_backend_connect}/%{INT:time_backend_response}/%{NOTSPACE:time_duration} %{INT:http_status_code} %{NOTSPACE:bytes_read} %{DATA:captured_request_cookie} %{DATA:captured_response_cookie} %{NOTSPACE:termination_state} %{INT:actconn}/%{INT:feconn}/%{INT:beconn}/%{INT:srvconn}/%{NOTSPACE:retries} %{INT:srv_queue}/%{INT:backend_queue} (\{%{HAPROXYCAPTUREDREQUESTHEADERS}\})?( )?(\{%{HAPROXYCAPTUREDRESPONSEHEADERS}\})?( )?"(<BADREQ>|(%{WORD:http_verb} (%{URIPROTO:http_proto}://)?(?:%{USER:http_user}(?::[^@]*)?@)?(?:%{URIHOST:http_host})?(?:%{URIPATHPARAM:http_request})?( HTTP/%{NUMBER:http_version})?))?"
 
 # Common NGINX Paterns
@@ -52,11 +50,7 @@ ET_MESOS_TIMESTAMP %{MONTHNUM}%{MONTHDAY} %{TIME}
 ET_MESOS %{DATA:level_short}%{ET_MESOS_TIMESTAMP:timestamp} %{POSINT:thread} %{DATA:file}:%{NUMBER:line}] %{GREEDYDATA:message}
 
 # Singularity Patterns
-ET_SINGULARITY_TIMESTAMP %{TIMESTAMP_ISO8601},%{POSINT}
-
-ET_SINGULARITY %{WORD:level} +\[%{ET_SINGULARITY_TIMESTAMP:timestamp}\] %{DATA:class}: %{GREEDYDATA:message}
+ET_SINGULARITY %{WORD:level} +\[%{DATESTAMP:timestamp}\] %{DATA:class}: %{GREEDYDATA:message}
 
 # Java Apps
-ET_JAVA_APP_TIMESTAMP %{DATESTAMP}(,%{POSINT})?
-
-ET_JAVA_APP %{ET_JAVA_APP_TIMESTAMP:timestamp} \[%{DATA:tread}\] %{DATA:level} %{DATA:class} +-%{GREEDYDATA:message}
+ET_JAVA_APP %{DATESTAMP:timestamp} \[%{DATA:tread}\] %{DATA:level} %{DATA:class} +-%{GREEDYDATA:message}
