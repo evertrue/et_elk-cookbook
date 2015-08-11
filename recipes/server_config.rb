@@ -1,6 +1,8 @@
 cookbook_name = 'et_elk'
 node.set['logstash']['instance']['server']['config_templates_cookbook'] =
   cookbook_name
+node.set['logstash']['instance']['server']['pattern_templates_cookbook'] =
+  cookbook_name
 
 ############
 # Patterns #
