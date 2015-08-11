@@ -18,3 +18,5 @@ default['et_elk']['server']['lumberjack']['add_field']['x_proccessor_chef_env'] 
 
 default['et_elk']['server']['file']['path'] = '/var/log/logstash-output.log'
 default['et_elk']['server']['file']['codec'] = 'rubydebug'
+
+set['logstash']['instance']['server']['config_templates_cookbook'] = 'et_elk'
