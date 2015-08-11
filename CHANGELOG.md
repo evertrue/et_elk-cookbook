@@ -5,6 +5,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.0.0] - 2015-08-10
+### Changed
+- Changed the name `elk` -> `et_elk`
+- Match multiline log entries correctly
+- Clean up a bunch of recipe code
+- Spin off a new recipe from `default` called `server` (and its sub-recipe `server_config`)
+- Add a bunch of new ServerSpec tests
+- Avoid using storage cookbook w/ Vagrant
+- Update kitchen-ec2 config as per deprecations
+- Avoid the use of custom timestamp parsers
+- Drop support for 12.04
+- Change test environment name from _default to dev
+
 ## [1.3.5] - 2015-08-07
 ### Added
 - Java App Patterns and Filters
