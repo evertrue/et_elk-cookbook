@@ -20,10 +20,8 @@ platforms:
 suites:
   - name: client
     run_list:
-      - recipe[apt]
       - recipe[et_elk::client]
   - name: server
     run_list:
-      - recipe[apt]
       - recipe[et_elk::server]
       - role[es_master]
