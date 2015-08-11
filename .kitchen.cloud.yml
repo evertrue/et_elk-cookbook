@@ -23,17 +23,25 @@ platforms:
       image_id: ami-92f569fa
       tags:
         Env: public
+    elk_forwarder:
+      mocking: true
+    elk_logstash:
+      server:
+        elasticsearch:
+          host: 127.0.0.1
 
 suites:
-  - name: default
+  - name: client
     run_list:
       - recipe[apt]
       - recipe[et_elk::default]
-      - role[es_master]
     attributes:
-      elk_forwarder:
-        mocking: true
-      elk_logstash:
-        server:
-          elasticsearch:
-            host: 127.0.0.1
+      apt:
+        compile_time_update: true
+  - name: server
+    run_list:
+      - recipe[apt]
+      - recipe[et_elk::server]
+    attributes:
+      apt:
+        compile_time_update: true

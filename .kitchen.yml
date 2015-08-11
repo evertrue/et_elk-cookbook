@@ -9,13 +9,6 @@ provisioner:
 
 platforms:
   - name: ubuntu-14.04
-
-suites:
-  - name: default
-    run_list:
-      - recipe[apt]
-      - recipe[et_elk::default]
-      - role[es_master]
     attributes:
       elk_forwarder:
         mocking: true
@@ -23,5 +16,14 @@ suites:
         server:
           elasticsearch:
             host: 127.0.0.1
-      storage:
-        ephemeral_mounts: false
+
+suites:
+  - name: client
+    run_list:
+      - recipe[apt]
+      - recipe[et_elk::client]
+  - name: server
+    run_list:
+      - recipe[apt]
+      - recipe[et_elk::server]
+      - role[es_master]
