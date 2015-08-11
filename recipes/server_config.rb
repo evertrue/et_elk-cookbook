@@ -29,18 +29,20 @@ logstash_config 'common filter' do
   instance 'server'
 end
 
-[
-  'syslog',
-  'rails app',
-  'java',
-  'haproxy http',
-  'nginx',
-  'mesos'
-].each do |app|
-  logstash_config "#{app} filter" do
-    templates "filter_#{app}" => "filter_#{app}.erb"
-    instance 'server'
-  end
+logstash_config 'application filters' do
+  # The logstash code insists on having a hash here (rather than an array) even
+  # though it works fine without the values, so we set them all to nil.
+  templates(
+    %w(
+      syslog
+      rails_app
+      java
+      haproxy_http
+      nginx
+      mesos
+    ).each_with_object({}) { |f, m| m["filter_#{f}"] = nil }
+  )
+  instance 'server'
 end
 
 ############
