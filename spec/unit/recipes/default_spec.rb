@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: elk
+# Cookbook Name:: et_elk
 # Spec:: default
 #
 # Copyright 2015 EverTrue, inc.
@@ -15,7 +15,7 @@
 
 require 'spec_helper'
 
-describe 'elk::default' do
+describe 'et_elk::default' do
   before do
     Fauxhai.mock(platform: 'ubuntu', version: '14.04')
   end

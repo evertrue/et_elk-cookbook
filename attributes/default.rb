@@ -1,4 +1,4 @@
-default['elk']['logstash_search_str'] = 'recipes:elk_logstash\:\:default'
+default['et_elk']['logstash_search_str'] = 'recipes:elk_logstash\:\:default'
 
 # Wipe legacy format of files
 if node['elk_forwarder']['config']['files'].is_a?(Array)

@@ -1,4 +1,4 @@
-# ELK [![Build Status](https://travis-ci.org/evertrue/elk-cookbook.svg)](https://travis-ci.org/evertrue/elk-cookbook)
+# ELK [![Build Status](https://travis-ci.org/evertrue/et_elk-cookbook.svg)](https://travis-ci.org/evertrue/et_elk-cookbook)
 
 ![ELK](http://www.bogotobogo.com/Hadoop/ELK/images/ELK_Icon.png)
 
@@ -6,7 +6,7 @@ This cookbook is the top level wrapper for the EverTrue ELK cookbook ecosystem
 
 # Requirements
 
-* `elk` Ties all the peices of an elk cluster together
+* `et_elk` Ties all the peices of an ELK cluster together
   * `elk_forwarder` Installs and Configures Logstash forwarder
   * `elk_logstash` Installs and Configures a central Logstash server
     * Leverages the `logstash` cookbook
@@ -45,7 +45,7 @@ end
 
 ## 3. Write your pattern
 
-We need to build a pattern(s) to add to [evertrue_patterns.erb](https://github.com/evertrue/elk-cookbook/blob/master/templates/default/evertrue_patterns.erb) or another patterns template that you have setup. Grab a bunch of sample logs and use the [Grok Constructor](http://grokconstructor.appspot.com/) utility to construct a pattern that will match your logs.  I usually find an existing pattern online and then tweak it to properly match the logs I am parsing.
+We need to build a pattern(s) to add to [evertrue_patterns.erb](https://github.com/evertrue/et_elk-cookbook/blob/master/templates/default/evertrue_patterns.erb) or another patterns template that you have setup. Grab a bunch of sample logs and use the [Grok Constructor](http://grokconstructor.appspot.com/) utility to construct a pattern that will match your logs.  I usually find an existing pattern online and then tweak it to properly match the logs I am parsing.
 
 Give your pattern a name like `ET_PUPPIES_APP` and add it to your patterns template.
 
@@ -101,24 +101,24 @@ Configures the node to be a client that ships logs to the central logstash serve
 
 1. Install logstash-forwarder via `elk_forwarder`
 2. Configure logstash-forwarder to forward logs to central log servers
-    * Central logstash servers are discovered via the `node['elk']['logstash_discovery']` attribute
-    * To Disable auto-discovery simply set `node['elk']['logstash_discovery']` to `''`
+    * Central logstash servers are discovered via the `node['et_elk']['logstash_discovery']` attribute
+    * To Disable auto-discovery simply set `node['et_elk']['logstash_discovery']` to `''`
 
 # Usage
 
 
 ```ruby
-depends 'elk', '~> 1.0'
+depends 'et_elk', '~> 1.0'
 ```
 
 ```ruby
 # To install and configure the forwarder
 
-include_recipe 'elk::client'
+include_recipe 'et_elk::client'
 
 # To install everything on the node
 
-include_recipe 'elk::default'
+include_recipe 'et_elk::default'
 ```
 
 ## Contributing

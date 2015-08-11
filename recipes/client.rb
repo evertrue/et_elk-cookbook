@@ -1,6 +1,6 @@
 servers = search(
   :node,
-  node['elk']['logstash_search_str'] +
+  node['et_elk']['logstash_search_str'] +
   " AND chef_environment:#{node.chef_environment}"
 ).map do |node|
   "#{node['fqdn']}:5043"

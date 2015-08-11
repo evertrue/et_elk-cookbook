@@ -13,7 +13,7 @@ suites:
   - name: default
     run_list:
       - recipe[apt]
-      - recipe[elk::default]
+      - recipe[et_elk::default]
       - role[es_master]
     attributes:
       elk_forwarder:

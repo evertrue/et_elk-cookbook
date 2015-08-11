@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: elk
+# Cookbook Name:: et_elk
 # Recipe:: default
 #
 # Copyright 2015 EverTrue, inc.
@@ -24,4 +24,4 @@ include_recipe 'elk_logstash'
 
 include_recipe 'elk_kibana'
 
-include_recipe 'elk::client'
+include_recipe 'et_elk::client'

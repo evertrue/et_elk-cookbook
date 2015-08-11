@@ -1,4 +1,4 @@
-name             'elk'
+name             'et_elk'
 maintainer       'EverTrue, inc.'
 maintainer_email 'eddie.hurtig@evertrue.com'
 license          'apache2'

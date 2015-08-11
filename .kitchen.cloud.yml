@@ -11,7 +11,7 @@ driver:
   transport:
     ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
   tags:
-    Name: elk-ubuntu-1404
+    Name: et_elk-ubuntu-1404
     Type: test
 
 provisioner:
@@ -28,7 +28,7 @@ suites:
   - name: default
     run_list:
       - recipe[apt]
-      - recipe[elk::default]
+      - recipe[et_elk::default]
       - role[es_master]
     attributes:
       elk_forwarder:
