@@ -40,6 +40,7 @@ logstash_config 'application filters' do
       haproxy_http
       nginx
       mesos
+      sidekiq
     ).each_with_object({}) { |f, m| m["filter_#{f}"] = nil }
   )
   instance 'server'
