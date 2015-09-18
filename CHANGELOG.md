@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.1.0] - 2015-09-18
+## Changed
+- Version pins for elk_elasticsearch and elk_logstash
+
+## Added
+- Added sidekiq log proccessing support for events with the tag `sidekiq`
+
 ## [2.0.0] - 2015-08-10
 ### Changed
 - Changed the name `elk` -> `et_elk`
