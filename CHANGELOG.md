@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.1.1] - 2015-10-05
+## Added
+- Attributes describing the plugins required for the logstash configs in et_elk
+
 ## [2.1.0] - 2015-09-18
 ## Changed
 - Version pins for elk_elasticsearch and elk_logstash
