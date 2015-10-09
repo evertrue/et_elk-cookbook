@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.2.0] - 2015-10-08
+## Added
+- A rails_basic filter handler for handling basic rails logs without fancy multiline parsing
+
 ## [2.1.1] - 2015-10-05
 ## Added
 - Attributes describing the plugins required for the logstash configs in et_elk

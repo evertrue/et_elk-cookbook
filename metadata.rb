@@ -4,7 +4,7 @@ maintainer_email 'eddie.hurtig@evertrue.com'
 license          'apache2'
 description      'Configures an Elk Cluster'
 long_description 'Installs/Configures elk'
-version          '2.1.1'
+version          '2.2.0'
 
 supports 'ubuntu', '>= 14.04'
 
