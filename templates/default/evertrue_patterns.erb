@@ -26,11 +26,24 @@
 
 MULTILINE_GREEDY (.|\r|\n)*
 
+# Matches a full multiline log message for a single Rails request
+# Example: 
+# I, [2015-10-09T01:51:08.767089 #22307]  INFO -- : Started GET "/some_url" for 123.123.123.123 at 2015-07-09 01:51:08 +0000
+# I, [2015-10-09T01:51:08.768650 #22307]  INFO -- : Processing by SomeController#someaction as JSON
+# I, [2015-10-09T01:51:08.768705 #22307]  INFO -- :   Parameters: {"hash"=>"of parameters"}
+# I, [2015-10-09T01:51:08.782838 #22307]  INFO -- : request.ip = 123.123.123.123 and request.remote_ip = 234.234.234.234
+# I, [2015-10-09T01:51:08.818618 #22307]  INFO -- : Completed 200 OK in 50ms (Views: 34.2ms | ActiveRecord: 10.5ms)
 RAILS_APP (?m)Started %{WORD:http_verb} "%{URIPATHPARAM:http_request}" for %{IPORHOST:client_ip} at %{TIMESTAMP_ISO8601:timestamp}%{DATA}Processing by (?<controller>[^#]+)#(?<action>\w+) as (?<format>\S+)(?:\n  Parameters: %{DATA:params}\n)?%{DATA:data}Completed %{NUMBER:http_status_code}%{DATA:response_type} in %{NUMBER:totalms}ms ?(\(Views: %{NUMBER:viewms}ms)?(%{DATA}ActiveRecord: %{NUMBER:activerecordms}ms)?%{GREEDYDATA}
 
+# Matches a single line of a Rails app log (staging.log or staging-kafka_consumer.log)
+# Example: "I, [2015-09-09T14:31:57.360253 #57574]  INFO -- The Message"
+RAILS_APP_LINE %{DATA}, \[%{TIMESTAMP_ISO8601:timestamp} #%{POSINT:thread_id}\]  %{GREEDYDATA:level} -- (: )?%{GREEDYDATA:message}
+
+# Example:
+# 2015-10-08T22:54:39.077Z 4758 TID-owm4fywkf SomeJobName JID-b0dee1e4c3a898f3e2407350 INFO: Some Message
 SIDEKIQ %{TIMESTAMP_ISO8601:timestamp} %{POSINT:pid} %{NOTSPACE:thread_id} %{NOTSPACE:sidekiq_job} %{NOTSPACE:job_id} %{NOTSPACE:level}: %{GREEDYDATA:message}
 
-# The common syslog base for all syslog messages from EverTrue
+# The common syslog base for all syslog messages from EverTrue (slightly different than default)
 ET_SYSLOGBASE %{SYSLOG5424PRI}%{NONNEGINT:syslog5424_ver} +(?:%{TIMESTAMP_ISO8601:timestamp}|-) +(?:%{HOSTNAME:hostname}|-) +(-|%{SYSLOG5424PRINTASCII:syslog5424_app}) +(-|%{SYSLOG5424PRINTASCII:syslog5424_proc}) +(-|%{SYSLOG5424PRINTASCII:syslog5424_msgid}) +(?:%{SYSLOG5424SD:syslog5424_sd}|-|)
 
 # Parses the content of an HAPROXY log (the part after all the syslog stuff).  Pulled from the HAPROXY_HTTP pattern
@@ -40,7 +53,6 @@ ET_HAPROXYHTTP_CONTENT %{IP:client_ip}:%{INT:client_port} \[%{ET_HAPROXYDATE:acc
 # Common NGINX Paterns
 ET_NGINX_USER [a-zA-Z\.\@\-\+_%]+
 ET_NGINX_DATE_TIME %{YEAR}/%{MONTHNUM}/%{MONTHDAY} %{TIME}
-
 
 # Parses an NGINX access Log
 ET_NGINXACCESS %{IPORHOST:client_ip} %{ET_NGINX_USER:http_ident} %{ET_NGINX_USER:http_user} \[%{HTTPDATE:timestamp}\] "%{WORD:http_verb} %{URIPATHPARAM:http_request} HTTP/%{NUMBER:http_version}" %{NUMBER:http_status_code} (?:%{NUMBER:bytes}|-) (?:"(?:%{URI:referrer}|-)"|%{QS:referrer}) %{QS:agent}
