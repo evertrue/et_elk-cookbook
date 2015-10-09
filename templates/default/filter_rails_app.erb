@@ -24,4 +24,17 @@ filter {
       ]
     }
   }
+  
+  if [type] == "rails_basic" {
+    grok {
+      match => {
+        "message" => "%{RAILS_APP_LINE}"
+      }
+    }
+
+    date {
+      match => ["timestamp", "ISO8601"]
+      remove_field => ["timestamp"]
+    }
+  }
 }
