@@ -2,6 +2,7 @@
 input {
   lumberjack {
     add_field => {
+      "x_input_processor" => "lumberjack"
 <% @lumberjack['add_field'].each do |key, val| %>
       "<%= key %>" => "<%= val %>"
 <% end %>
