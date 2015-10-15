@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.3.3] - 2015-10-15
+## Changed
+- Add a Java-type timestamp matcher to the java log filter
+
 ## [2.3.2] - 2015-10-15
 ## Changed
 - Set flag x_input_processor on all inputs
