@@ -16,6 +16,12 @@ default['et_elk']['server']['lumberjack']['add_field']['x_proccessed_by'] = node
 default['et_elk']['server']['lumberjack']['add_field']['x_proccessor_chef_env'] =
   node.chef_environment
 
+default['et_elk']['server']['log4j']['data_timeout'] = 5
+default['et_elk']['server']['log4j']['host'] = '0.0.0.0'
+default['et_elk']['server']['log4j']['mode'] = 'server'
+default['et_elk']['server']['log4j']['port'] = 5044
+default['et_elk']['server']['log4j']['debug'] = false
+
 default['et_elk']['server']['file']['path'] = '/var/log/logstash-output.log'
 default['et_elk']['server']['file']['codec'] = 'rubydebug'
 

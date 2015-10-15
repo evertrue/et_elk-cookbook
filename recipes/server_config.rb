@@ -21,6 +21,12 @@ logstash_config 'lumberjack input' do
   variables node['et_elk']['server']
 end
 
+logstash_config 'log4j input' do
+  templates 'input_log4j' => 'input_log4j.erb'
+  instance 'server'
+  variables node['et_elk']['server']
+end
+
 ############
 # Filters  #
 ############
