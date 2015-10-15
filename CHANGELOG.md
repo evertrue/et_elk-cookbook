@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.3.2] - 2015-10-15
+## Changed
+- Set flag x_input_processor on all inputs
+
+## 
+
 ## [2.3.1] - 2015-10-15
 ## Changed
 - Add service restart notifications to logstash_config resource calls
