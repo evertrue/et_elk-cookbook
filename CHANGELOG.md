@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.3.1] - 2015-10-15
+## Changed
+- Add service restart notifications to logstash_config resource calls
+
 ## [2.3.0] - 2015-10-15
 ## Added
 - Add log4j input for logstash
