@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.3.0] - 2015-10-15
+## Added
+- Add log4j input for logstash
+
 ## [2.2.0] - 2015-10-08
 ## Added
 - A rails_basic filter handler for handling basic rails logs without fancy multiline parsing
