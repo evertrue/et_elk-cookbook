@@ -1,6 +1,6 @@
 [
   'et_elk::default',
-  'elk_elasticsearch',
+  'et_elk::elasticsearch',
   'elk_logstash::certs',
   'elk_logstash',
   'elk_kibana',
