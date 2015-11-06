@@ -2,5 +2,5 @@
   'et_elk::default',
   'et_elk::elasticsearch',
   'et_elk::logstash',
-  'elk_kibana',
+  'et_elk::kibana'
 ].each { |cb| include_recipe cb }
