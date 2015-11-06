@@ -29,7 +29,8 @@ node.set['elasticsearch']['plugins'] = {
   'royrusso/elasticsearch-HQ'  => {},
   'mobz/elasticsearch-head'    => {},
   'sonian/elasticsearch-jetty' => {
-    'url' => 'https://oss-es-plugins.s3.amazonaws.com/elasticsearch-jetty/elasticsearch-jetty-1.2.1.zip'
+    'url' => 'https://oss-es-plugins.s3.amazonaws.com/elasticsearch-jetty/' \
+             'elasticsearch-jetty-1.2.1.zip'
   },
   'elasticsearch/elasticsearch-cloud-aws' => {
     'version' => '2.4.1'
@@ -40,7 +41,7 @@ allocated_memory = "#{(node['memory']['total'].to_i * 0.4).floor / 1024}m"
 node.set['elasticsearch']['allocated_memory'] = allocated_memory
 node.set['elasticsearch']['index_base_key'] = 'default-0'
 
-# this should be moved to the logserver cookbook and replaced with the logserver cookbook in the search_query
+# this should be moved to the logserver cookbook
 node.set['elasticsearch']['discovery']['search_query'] =
   "recipes:et_elk\\:\\:server AND chef_environment:#{node.chef_environment}"
 
