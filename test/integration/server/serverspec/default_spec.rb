@@ -1,47 +1,28 @@
 require 'spec_helper'
 
 describe 'et_elk::default' do
-  describe 'filter config' do
-    describe command('/opt/logstash/server/bin/logstash -f ' \
-                     '/opt/logstash/server/etc/conf.d/ --configtest') do
+  describe 'it installs logstash' do
+    describe command('/opt/logstash/server/bin/logstash -V') do
       its(:exit_status) { should eq 0 }
-      its(:stdout) { should match(/Configuration OK/) }
+      its(:stdout) { should match(/logstash 1\.5\.4/) }
     end
+  end
 
-    %w(
-      filter_000_common
-      filter_haproxy_http
-      filter_java
-      filter_mesos
-      filter_nginx
-      filter_rails_app
-      filter_syslog
-      input_lumberjack
-      output_elasticsearch
-    ).each do |conf_file|
-      describe file("/opt/logstash/server/etc/conf.d/#{conf_file}") do
-        it { is_expected.to be_file }
-      end
-    end
-
-    %w(
-      filter_000_common
-      filter_haproxy_http
-      filter_java
-      filter_mesos
-      filter_nginx
-      filter_rails_app
-      filter_syslog
-    ).each do |filter_conf|
-      describe file("/opt/logstash/server/etc/conf.d/#{filter_conf}") do
-        its(:content) { should match 'filter' }
-      end
-    end
-
-    describe command('/opt/logstash/server/bin/logstash -f ' \
-                     '/opt/logstash/server/etc/conf.d/ --configtest') do
+  describe 'it installs elasticsearch' do
+    describe command('curl http://localhost:9200') do
       its(:exit_status) { should eq 0 }
-      its(:stdout) { should match(/Configuration OK/) }
+      its(:stdout) { should include '"number" : "1.4.4"' }
+    end
+    describe command('curl http://localhost:9200') do
+      its(:exit_status) { should eq 0 }
+      its(:stdout) { should include '"status" : 200,' }
+    end
+  end
+
+  describe 'it installs kibana' do
+    describe command('/opt/kibana/current/bin/kibana -V') do
+      its(:exit_status) { should eq 0 }
+      its(:stdout) { should include '4.1.1' }
     end
   end
 end
