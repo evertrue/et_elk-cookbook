@@ -1,1 +1,1 @@
-set['apt']['compile_time_update'] = true
+set['java']['jdk_version'] = 8
