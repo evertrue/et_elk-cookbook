@@ -18,9 +18,6 @@ platforms:
             host: 127.0.0.1
 
 suites:
-  - name: client
-    run_list:
-      - recipe[et_elk::client]
   - name: server
     run_list:
       - recipe[et_elk::server]
