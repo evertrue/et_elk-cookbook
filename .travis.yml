@@ -1,9 +1,40 @@
 language: ruby
-cache: bundler
-rvm:
-- 2.1
-bundler_args: "--without integration --deployment --retry 3"
+rvm: 2.2
+sudo: required
+cache:
+  directories:
+  - "$HOME/.berkshelf"
+addons:
+  apt:
+    sources:
+    - chef-stable-precise
+    packages:
+    - chefdk
+env:
+  matrix:
+  - INSTANCE: default
+  - INSTANCE: server
+  global:
+  - CHEF_BIN=/opt/chefdk/bin
+  - KITCHEN_YAML=.kitchen.cloud.yml
+  - secure: EoR2Q1M0LFA2gIDtiaaFP31fknlOCKwM18iUg2JjFHweTP2wDTqOn0JiAkYdmB6R+4ABWmU8vS9C4vxuTxckvlqme94ahBTRYd89xrXA1PUlZ/ys5SXbm36Q/nsvVPfrEwQBNsNjAa55wNiGWggpvCkmrsikd+O4FNSAzit0WgAMX1Yqa2B8QZgHBGPVSGZ6e1q5QqtY3h8Ie/wG0ZrqBPTMkHzA2bdFWT5Ijo9guAvYv8MyhDfuxNcayXANVpGvSBlSx3YvctRjmHk2AUSv/a/ZLNAxHPfYWaadVkfLt2fxAxO/qMbfSY+k3n6Bh4aNeo1i/NIyd4EkbWAOYw614w6T3Gy5+fOKLIEjlSBW2ywseYlltoEshn1va5fllmq+SxoR4+Fbr4vjmXQxxSe365BcGF5fP3RZqM3NI88TNXahialmdU5Ux+W/rVow/+iHAM+bUsm9n7vMDjnVD8r46V7PqIapOmWUCQ/7SqrPhQ+0x4p6dK0rD/0NZhhwswTMvy20H5pSrpG5KpdhDVyIzZsxDdpHCxMWDP3OLG6XXlnybFiTGU7OldzDSxf/7cH0J+RI5+yp2jACv4bgBzWpDPa2gkwpIdyxrgC9Lk1LIgZ9uWrXBmXo+c7hzwsT/ohcqv0zYqjWoOQLwA8O3UV6OcOAKqxDI+tIPTaSY3NoWII=
+  - secure: o9gVTAnuWJxOGNY+DxGUvrfQT0aE3Dc0A+xcle0Un2I4/JTo/4ghIxur+zApv3IHQcBezXqX5O4sjOCHDHNjoI1G7KFWNHuHz7rQDOh4QiB1jGFdWsQFu5Zgg/eIdAOirEru3K9hx/ZIpoNCSc1lUTxR+LQ2Ye4reEtrJPuKsvhc4iHKZQZrgV0VxOOzZnkWs2I7kuz7Hp/AZUGEPs9IDxpfLSU7iKDR/i6pZuRLermKX4lIzw0T6lQELN8Q4cB55BUrugVzSG2ZFBFRoYHwZaOwCVTNuKOV/XvrWx4UsR/yTga+3PMYnHb4WBUrAY+3tSZ3raV3T9tpmhTAiOD/INNwL47uvTERT3M7jDbbEuPyd3bhnMymWYLrKjIj/GNOnmtyjPm1zXfCr76O9Yd6sEFKrzodKaDK46FFX1y6HHskyBK7PUMx2Lay3qf7lG3qvdz+g7fZAznGmyp8FCt44RjPX04hZO78/6Ks57G9P7/7it69/NFlLY12KReFsp3/q2kKNnMvlkxXbyzRJ9sd49oQ9t0bgqym0LvDGa3Y/hBHwMqXGYpxQP3u54a4qwepAhWjAV18HgovHFESszHsvaMUlod/mwRbUnACOQfBitYI51NcvWjC7nJSI27yWp9wQQbmwXRcoZ9XC5pZw8Oti85OE93yeTDq1sMhVTg3dOA=
+before_install:
+- openssl aes-256-cbc -K $encrypted_c35f1d91663f_key -iv $encrypted_c35f1d91663f_iv
+  -in travis_ci_ec2.pem.enc -out ~/.ssh/travis_ci_ec2.pem -d
+- mkdir ~/.chef
+- echo 'node_name "trubot"' >> ~/.chef/knife.rb
+- chmod 600 ~/.ssh/travis_ci_ec2.pem
+- cp ~/.ssh/travis_ci_ec2.pem ~/.ssh/id_rsa
+install:
+- eval "$(${CHEF_BIN}/chef shell-init bash)"
+- "${CHEF_BIN}/chef gem install kitchen-ec2"
+- "${CHEF_BIN}/berks"
 before_script:
-- bundle exec berks
+- "${CHEF_BIN}/chef --version"
+- "${CHEF_BIN}/rubocop --version"
+- "${CHEF_BIN}/foodcritic --version"
 script:
-- bundle exec rake travis
+- "${CHEF_BIN}/rubocop"
+- "${CHEF_BIN}/foodcritic ."
+- "${CHEF_BIN}/kitchen test ${INSTANCE} -d always"
