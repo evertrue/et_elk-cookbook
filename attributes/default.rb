@@ -1,1 +1,1 @@
-set['java']['jdk_version'] = 8
+set['java']['jdk_version'] = 7
