@@ -12,7 +12,6 @@ addons:
     - chefdk
 env:
   matrix:
-  - INSTANCE: default
   - INSTANCE: server
   global:
   - CHEF_BIN=/opt/chefdk/bin
