@@ -32,7 +32,6 @@ platforms:
         elasticsearch:
           host: 127.0.0.1
 
-
 suites:
   - name: server
     run_list:
