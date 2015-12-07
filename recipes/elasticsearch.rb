@@ -6,8 +6,9 @@ node.set['java']['java_home']   = '/usr/lib/jvm/java-7-openjdk-amd64'
 node.set['java']['java_exec']   = node['java']['java_home'] + '/bin/java'
 node.set['java']['jdk_version'] = '7'
 
+include_recipe 'apt' if node['platform_family'] == 'debian'
 include_recipe 'java'
-
+include_recipe 'runit'
 include_recipe 'storage'
 
 node.set['elasticsearch']['version'] = '1.4.4'

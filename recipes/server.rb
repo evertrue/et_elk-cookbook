@@ -1,5 +1,4 @@
 [
-  'et_elk::default',
   'et_elk::elasticsearch',
   'et_elk::logstash',
   'kibana_lwrp::install'
