@@ -25,12 +25,6 @@ platforms:
       image_id: ami-92f569fa
       tags:
         Env: public
-    elk_forwarder:
-      mocking: true
-    elk_logstash:
-      server:
-        elasticsearch:
-          host: 127.0.0.1
 
 suites:
   - name: server
