@@ -2,8 +2,6 @@
 default['elk_kibana']['cluster']['name'] = "#{node.chef_environment}-elk"
 
 default['java']['jdk_version'] = 7
-default['java']['java_home']   = '/usr/lib/jvm/java-7-openjdk-amd64'
-default['java']['java_exec']   = "#{node['java']['java_home']}/bin/java"
 
 set['kibana']['version'] = '4.1.1-linux-x64'
 set['kibana']['file']['url'] = 'https://download.elasticsearch.org/kibana/kibana/kibana-4.1.1-linux-x64.tar.gz'
