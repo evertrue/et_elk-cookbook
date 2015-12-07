@@ -16,10 +16,6 @@
 require 'spec_helper'
 
 describe 'et_elk::default' do
-  before do
-    Fauxhai.mock(platform: 'ubuntu', version: '14.04')
-  end
-
   context 'When all attributes are default, on an unspecified platform' do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '14.04') do |node, server|
