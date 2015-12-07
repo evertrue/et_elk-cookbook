@@ -1,3 +1,8 @@
+#
+# Cookbook Name:: et_elk
+# Recipe:: elasticsearch
+#
+# Copyright (c) 2015 EverTrue, inc, All Rights Reserved.
 
 # Install Ruby
 package 'ruby'

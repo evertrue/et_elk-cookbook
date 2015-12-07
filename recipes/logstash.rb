@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: elk_logstash
-# Recipe:: default
+# Cookbook Name:: et_elk
+# Recipe:: logstash
 #
 # Copyright (c) 2015 EverTrue, inc, All Rights Reserved.
 
