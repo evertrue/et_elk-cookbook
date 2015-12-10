@@ -28,10 +28,6 @@ default['et_elk']['server']['config']['input']['log4j']['port'] = 5044
 default['et_elk']['server']['file']['path'] = '/var/log/logstash-output.log'
 default['et_elk']['server']['file']['codec'] = 'rubydebug'
 
-set['elk_logstash']['plugins'] = %w(
-  logstash-filter-alter
-)
-
 # All input processors should leave tags indicating their names
 default['et_elk']['server']['config']['input'].each_key do |input|
   default['et_elk']['server']['config']['input'][input]['add_field']['x_input_processor'] = input
