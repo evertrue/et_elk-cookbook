@@ -10,9 +10,9 @@ default['et_elk']['server']['elasticsearch']['cluster'] = "#{node.chef_environme
 default['et_elk']['server']['elasticsearch']['embedded'] = false
 default['et_elk']['server']['elasticsearch']['protocol'] = 'http'
 
-default['et_elk']['server']['lumberjack']['ssl certificate'] =
+default['et_elk']['server']['lumberjack']['ssl_certificate'] =
   '/etc/logstash/lumberjack.crt.pem'
-default['et_elk']['server']['lumberjack']['ssl key'] = '/etc/logstash/lumberjack.key.pem'
+default['et_elk']['server']['lumberjack']['ssl_key'] = '/etc/logstash/lumberjack.key.pem'
 default['et_elk']['server']['lumberjack']['host'] = '0.0.0.0'
 default['et_elk']['server']['lumberjack']['port'] = '5043'
 default['et_elk']['server']['lumberjack']['codec'] = 'json'
