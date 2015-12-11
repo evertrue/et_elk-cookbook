@@ -41,9 +41,61 @@ describe 'et_elk::logstash' do
       it { is_expected.to be_enabled }
     end
   end
+
+  describe 'input/output config' do
+    describe file('/opt/logstash/server/etc/conf.d/input_lumberjack') do
+      it { is_expected.to be_file }
+      its(:content) do
+        is_expected.to match("input {
+  lumberjack {
+    ssl_certificate => \"/etc/logstash/lumberjack.crt.pem\"
+    ssl_key => \"/etc/logstash/lumberjack.key.pem\"
+    host => \"0.0.0.0\"
+    port => 5043
+    codec => \"plain\"
+    add_field => {
+      x_proccessed_by => \"#{`hostname -f`.chomp}\"
+      x_proccessor_chef_env => \"_default\"
+      x_input_processor => \"lumberjack\"
+    }
+  }
+}")
+      end
+    end
+
+    describe file('/opt/logstash/server/etc/conf.d/input_log4j') do
+      it { is_expected.to be_file }
+      its(:content) do
+        is_expected.to match('input {
+  log4j {
+    data_timeout => 5
+    host => "0.0.0.0"
+    mode => "server"
+    port => 5044
+    add_field => {
+      x_input_processor => "log4j"
+    }
+  }
+}')
+      end
+    end
+
+    describe file('/opt/logstash/server/etc/conf.d/output_elasticsearch') do
+      it { is_expected.to be_file }
+      its(:content) do
+        is_expected.to match('output {
+  elasticsearch {
+    cluster => "_default-elk"
+    embedded => false
+    protocol => "http"
+  }
+}')
+      end
+    end
+  end
 end
 
-describe 'et_elk::kibana' do
+describe 'et_elk::server' do
   describe 'it installs kibana' do
     describe command('/opt/kibana/current/bin/kibana -V') do
       its(:exit_status) { should eq 0 }
