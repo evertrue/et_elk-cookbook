@@ -7,12 +7,10 @@
 
 name = 'server'
 
-logstash_instance name do
-  action :create
-end
+logstash_instance name
 
-logstash_service name do
-  action [:enable]
+
+logstash_service instance_name do
   method 'native'
 end
 
@@ -25,7 +23,6 @@ end
 node['et_elk']['logstash']['plugins'].each do |plugin|
   logstash_plugins plugin do
     instance name
-    action [:create]
     not_if "#{node['logstash']['instance_default']['basedir']}/" \
            "#{name}/bin/plugin list | grep #{plugin}"
   end
