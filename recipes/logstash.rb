@@ -4,7 +4,6 @@
 #
 # Copyright (c) 2015 EverTrue, inc, All Rights Reserved.
 
-node.set['et_elk']['logstash']['server']['config']['input']['lumberjack']['host'] = '0.0.0.0'
 
 name = 'server'
 
