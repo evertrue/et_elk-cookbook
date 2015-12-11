@@ -12,7 +12,7 @@ depends 'apt', '~> 2.0'
 depends 'java', '~> 1.0'
 depends 'runit', '~> 1.5'
 
-depends 'elasticsearch', '~> 0.3.11'
+depends 'elasticsearch', '~> 2.1'
 depends 'storage', '~> 2.2'
 
 depends 'logstash', '~> 0.12.0'
