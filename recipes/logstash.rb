@@ -23,3 +23,22 @@ node['et_elk']['logstash']['plugins'].each do |plugin|
     not_if "#{logstash_basedir}/#{instance_name}/bin/plugin list | grep #{plugin}"
   end
 end
+
+####################
+#  Inputs/Outputs  #
+####################
+node['et_elk']['server']['config'].each do |type, type_conf|
+  type_conf.each do |module_name, module_conf|
+    template "#{logstash_basedir}/#{instance_name}/etc/conf.d/#{type}_#{module_name}" do
+      source 'filter.erb'
+      owner node['logstash']['instance_default']['user']
+      group node['logstash']['group']
+      variables(
+        type: type,
+        module_name: module_name,
+        module_conf: ::EtElk::Helpers.generate_module_config(module_conf, 4)
+      )
+      notifies :restart, "logstash_service[#{instance_name}]"
+    end
+  end
+end
