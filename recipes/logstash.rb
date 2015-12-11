@@ -12,11 +12,14 @@ logstash_service instance_name do
   method 'native'
 end
 
+logstash_basedir = node['logstash']['instance_default']['basedir']
 
+###########
+# Plugins #
+###########
 node['et_elk']['logstash']['plugins'].each do |plugin|
   logstash_plugins plugin do
     instance instance_name
-    not_if "#{node['logstash']['instance_default']['basedir']}/" \
-           "#{name}/bin/plugin list | grep #{plugin}"
+    not_if "#{logstash_basedir}/#{instance_name}/bin/plugin list | grep #{plugin}"
   end
 end
