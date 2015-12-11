@@ -9,13 +9,6 @@ provisioner:
 
 platforms:
   - name: ubuntu-14.04
-    attributes:
-      elk_forwarder:
-        mocking: true
-      elk_logstash:
-        server:
-          elasticsearch:
-            host: 127.0.0.1
 
 suites:
   - name: server
