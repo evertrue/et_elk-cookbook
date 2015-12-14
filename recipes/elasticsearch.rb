@@ -7,18 +7,18 @@
 include_recipe 'java'
 include_recipe 'storage'
 
-#
-# -***** NEW RECIPE STARTS HERE ****-
-#
-
 node.set['et_elk']['elasticsearch']['custom_config']['discovery.zen.ping.unicast.hosts'] =
   search(:node, node['et_elk']['elasticsearch']['search_query']).map(&:ipaddress)
 
 include_recipe 'chef-sugar'
 
-# see README.md and test/fixtures/cookbooks for more examples!
 elasticsearch_user 'elasticsearch'
 elasticsearch_install 'elasticsearch'
+
+#
+# CONFIGURATION
+#
+
 elasticsearch_configure 'elasticsearch' do
   allocated_memory "#{(node['memory']['total'].to_i * 0.4).floor / 1024}m"
   if node['storage']['ephemeral_mounts'] &&
@@ -36,6 +36,7 @@ elasticsearch_service 'elasticsearch'
 #
 # PLUGINS
 #
+
 node['et_elk']['elasticsearch']['plugins'].each do |plugin_name, plugin_conf|
   elasticsearch_plugin plugin_name do
     if plugin_conf['url']
