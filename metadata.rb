@@ -17,4 +17,4 @@ depends 'storage', '~> 2.2'
 
 depends 'logstash', '~> 0.12.0'
 
-depends 'kibana_lwrp', '~> 2.0.5'
+depends 'kibana_lwrp', '~> 2.0'
