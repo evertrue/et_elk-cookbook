@@ -4,63 +4,49 @@
 #
 # Copyright (c) 2015 EverTrue, inc, All Rights Reserved.
 
-# Install Ruby
-package 'ruby'
-
-include_recipe 'apt' if node['platform_family'] == 'debian'
 include_recipe 'java'
-include_recipe 'runit'
 include_recipe 'storage'
 
-node.set['elasticsearch']['version'] = '1.4.4'
-node.set['elasticsearch']['cluster']['name'] = "#{node.chef_environment}-elk"
+node.set['et_elk']['elasticsearch']['custom_config']['discovery.zen.ping.unicast.hosts'] =
+  search(:node, node['et_elk']['elasticsearch']['search_query']).map(&:ipaddress)
 
-node.set['elasticsearch']['index']['search']['slowlog']['threshold']['query'] = {
-  'warn' => '5s',
-  'debug' => '1s'
-}
-node.set['elasticsearch']['discovery'] = {
-  'search_query' => 'elasticsearch_cluster_name:' +
-                    node['elasticsearch']['cluster']['name'] +
-                    ' AND elasticsearch_node.master:true' \
-                    " AND chef_environment:#{node.chef_environment}",
-  'node_attribute' => nil
-}
+include_recipe 'chef-sugar'
 
-node.set['elasticsearch']['plugins'] = {
-  'royrusso/elasticsearch-HQ'  => {},
-  'mobz/elasticsearch-head'    => {},
-  'sonian/elasticsearch-jetty' => {
-    'url' => 'https://oss-es-plugins.s3.amazonaws.com/elasticsearch-jetty/' \
-             'elasticsearch-jetty-1.2.1.zip'
-  },
-  'elasticsearch/elasticsearch-cloud-aws' => {
-    'version' => '2.4.1'
-  }
-}
+elasticsearch_user 'elasticsearch'
+elasticsearch_install 'elasticsearch'
 
-allocated_memory = "#{(node['memory']['total'].to_i * 0.4).floor / 1024}m"
-node.set['elasticsearch']['allocated_memory'] = allocated_memory
-node.set['elasticsearch']['index_base_key'] = 'default-0'
+#
+# CONFIGURATION
+#
 
-# this should be moved to the logserver cookbook
-node.set['elasticsearch']['discovery']['search_query'] =
-  "recipes:et_elk\\:\\:server AND chef_environment:#{node.chef_environment}"
-
-node.set['elasticsearch']['custom_config']['index.number_of_shards'] = 3
-node.set['elasticsearch']['custom_config']['indices.memory.index_buffer_size'] = '50%'
-node.set['elasticsearch']['custom_config']['index.translog.flush_threshold_ops'] = 50_000
-
-if node['storage']['ephemeral_mounts'] &&
-   node['storage']['ephemeral_mounts'].any?
-  node.set['elasticsearch']['path']['data'] = node['storage']['ephemeral_mounts'].map do |mount|
-    "#{mount}/elasticsearch/data"
-  end.sort
+elasticsearch_configure 'elasticsearch' do
+  allocated_memory "#{(node['memory']['total'].to_i * 0.4).floor / 1024}m"
+  if node['storage']['ephemeral_mounts'] &&
+     node['storage']['ephemeral_mounts'].any?
+    path_data(
+      package: node['storage']['ephemeral_mounts'].map do |mount|
+        "#{mount}/elasticsearch/data"
+      end.sort.join(',')
+    )
+  end
+  configuration node['et_elk']['elasticsearch']['custom_config']
 end
+elasticsearch_service 'elasticsearch'
 
-node.set['elasticsearch']['node.master'] = node['roles'].include?('es_master')
-node.set['elasticsearch']['node.data'] = true
+#
+# PLUGINS
+#
 
-include_recipe 'elasticsearch'
-include_recipe 'elasticsearch::plugins'
-include_recipe 'elasticsearch::search_discovery'
+node['et_elk']['elasticsearch']['plugins'].each do |plugin_name, plugin_conf|
+  elasticsearch_plugin plugin_name do
+    if plugin_conf['url']
+      url(
+        if plugin_conf['version']
+          "#{plugin_conf['url']}/#{plugin_conf['version']}"
+        else
+          plugin_conf['url']
+        end
+      )
+    end
+  end
+end
