@@ -13,7 +13,7 @@ class EtElk
             "{\n#{generate_module_config(v, (indent + 2))}\n" +
             (' ' * indent) + '}'
           else
-            fail "Unknown data type: #{v.class}"
+            fail "Unknown data type: #{v.class} for key #{k}"
           end
         m << line
       end.join("\n")
