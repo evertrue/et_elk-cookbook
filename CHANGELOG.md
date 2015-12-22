@@ -5,6 +5,38 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [3.0.0] - 2015-12-22
+## Changed
+- Cookbook functionality
+    + Move to Java 8
+    + Remove "client" functionality completely
+    + Move most "server_config" content (filters, patterns, etc) to `evertrue/logserver-cookbook`
+    + Merge in `evertrue/elk_elasticsearch-cookbook`, `evertrue/elk_logstash-cookbook`, and `evertrue/elk_kibana-cookbook`
+    + Move key/cert configuration to `evertrue/logserver-cookbook`
+    + Drop `kibana` recipe in favor of directly including `kibana_lwrp::install`
+    + Stop using default recipe just to install dependencies
+    + Give elasticsearch recipe its own attributes file
+    + Move kibana attributes to `server`
+    + Clean up the recipe headers
+    + Remove blank/false attributes from server attributes file
+    + Use underscores instead of spaces for ssl-related keys
+    + Move attributes affecting logstash filter files into their own namespace for easy parsing
+    + Set lumberjack default codec to "plain" to match what we are using in prod
+    + Automatically include x_input_processor tag in all inputs
+    + Clean up a lot of useless attributes
+    + Remove resources that do nothing from logstash recipe
+    + Move inputs/outputs definition to this cookbook (from `evertrue/logserver-cookbook`)
+    + Craft a helper method (`generate_module_config`) to simplify the rendering of the input/output templates
+    + Upgrade `elasticsearch` cookbook to version 2 (and associated cookbook changes)
+    + Upgrade `kibana` to v4.3.0
+    + Use less specific version for kibana_lwrp cookbook
+- Test functionality
+    + Modernize TravisCI config
+    + Substantially clean up and improve the integration tests
+    + Remove Rubygems stuff completely (deprecated in favor of ChefDK)
+    + Remove unused default instace from Travis tests
+    + ServerSpec tests: Use net/http+JSON instead of cURL to parse ES status response
+
 ## [2.3.3] - 2015-10-15
 ## Changed
 - Add a Java-type timestamp matcher to the java log filter
