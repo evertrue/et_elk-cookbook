@@ -31,7 +31,7 @@ node['et_elk']['server']['config'].each do |type, type_conf|
   type_conf.each do |module_name, module_conf|
     template "#{logstash_basedir}/#{instance_name}/etc/conf.d/#{type}_#{module_name}" do
       source 'filter.erb'
-      owner node['logstash']['instance_default']['user']
+      owner node['logstash']['user']
       group node['logstash']['group']
       variables(
         type: type,
