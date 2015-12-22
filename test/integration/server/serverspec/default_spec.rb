@@ -103,7 +103,7 @@ describe 'et_elk::server' do
   describe 'it installs kibana' do
     describe command('/opt/kibana/current/bin/kibana -V') do
       its(:exit_status) { should eq 0 }
-      its(:stdout) { should include '4.1.1' }
+      its(:stdout) { should include '4.3.0' }
     end
   end
 
@@ -112,9 +112,9 @@ describe 'et_elk::server' do
       it { is_expected.to be_running }
     end
 
-    describe command('curl http://localhost:5601') do
+    describe command('curl http://localhost:5601/app/kibana') do
       its(:exit_status) { should eq 0 }
-      its(:stdout) { should include 'Kibana 4' }
+      its(:stdout) { should include '<title>Kibana</title>' }
     end
   end
 end
