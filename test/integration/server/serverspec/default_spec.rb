@@ -40,6 +40,12 @@ describe 'et_elk::logstash' do
     end
   end
 
+  describe command('/opt/logstash/server/bin/logstash -f ' \
+                   '/opt/logstash/server/etc/conf.d/ --configtest') do
+    its(:exit_status) { should eq 0 }
+    its(:stdout) { should match(/Configuration OK/) }
+  end
+
   describe 'input/output config' do
     describe file('/opt/logstash/server/etc/conf.d/input_lumberjack') do
       it { is_expected.to be_file }
