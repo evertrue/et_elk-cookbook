@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'net/http'
+require 'json'
 
 describe 'et_elk::elasticsearch' do
   describe 'it installs elasticsearch' do
@@ -13,14 +15,16 @@ describe 'et_elk::elasticsearch' do
       it { is_expected.to be_enabled }
     end
 
-    describe command('curl http://localhost:9200') do
-      its(:exit_status) { should eq 0 }
-      its(:stdout) { should include '"number" : "1.4.4"' }
-    end
+    describe 'API response' do
+      es_api_response = Net::HTTP.get_response(URI('http://localhost:9200'))
 
-    describe command('curl http://localhost:9200') do
-      its(:exit_status) { should eq 0 }
-      its(:stdout) { should include '"status" : 200,' }
+      it 'returns 200 status code' do
+        expect(es_api_response.code).to eq '200'
+      end
+
+      it 'has the right version' do
+        expect(JSON.parse(es_api_response.body)['version']['number']).to eq('1.4.4')
+      end
     end
   end
 end
