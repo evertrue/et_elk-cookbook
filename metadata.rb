@@ -8,7 +8,13 @@ version          '2.3.3'
 
 supports 'ubuntu', '>= 14.04'
 
-depends 'elk_elasticsearch', '~> 1.0'
-depends 'elk_logstash', '~> 1.0'
-depends 'elk_kibana', '~> 1.1'
-depends 'elk_forwarder', '~> 2.0'
+depends 'apt', '~> 2.0'
+depends 'java', '~> 1.0'
+depends 'runit', '~> 1.5'
+
+depends 'elasticsearch', '~> 2.1'
+depends 'storage', '~> 2.2'
+
+depends 'logstash', '~> 0.12.0'
+
+depends 'kibana_lwrp', '~> 2.0'

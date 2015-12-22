@@ -16,13 +16,9 @@
 require 'spec_helper'
 
 describe 'et_elk::default' do
-  before do
-    Fauxhai.mock(platform: 'ubuntu', version: '14.04')
-  end
-
   context 'When all attributes are default, on an unspecified platform' do
     let(:chef_run) do
-      runner =  ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '14.04') do |node, server|
+      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '14.04') do |node, server|
         node.automatic['memory'] = { 'total' => '1692536kB' }
         Dir.glob('test/integration/default/data_bags/**/*.json').each do |item|
           bag = File.basename(File.dirname(item))

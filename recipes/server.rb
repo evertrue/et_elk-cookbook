@@ -1,9 +1,11 @@
+#
+# Cookbook Name:: et_elk
+# Recipe:: server
+#
+# Copyright (c) 2015 EverTrue, inc, All Rights Reserved.
+
 [
-  'et_elk::default',
-  'elk_elasticsearch',
-  'elk_logstash::certs',
-  'elk_logstash',
-  'elk_kibana',
-  'et_elk::server_config',
-  'et_elk::client'
+  'et_elk::elasticsearch',
+  'et_elk::logstash',
+  'kibana_lwrp::install'
 ].each { |cb| include_recipe cb }
