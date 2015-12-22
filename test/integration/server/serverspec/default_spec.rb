@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe 'et_elk::elasticsearch' do
   describe 'it installs elasticsearch' do
-    describe file('/usr/local/elasticsearch/bin/elasticsearch') do
-      it { should be_owned_by 'elasticsearch' }
-      it { should be_grouped_into 'elasticsearch' }
+    describe file('/usr/share/elasticsearch/bin/elasticsearch') do
       it { should be_executable }
     end
   end
