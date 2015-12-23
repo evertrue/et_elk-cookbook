@@ -111,14 +111,13 @@ describe 'et_elk::server' do
     end
   end
 
-  describe 'kibana is up' do
+  describe 'kibana' do
     describe service('kibana') do
       it { is_expected.to be_running }
     end
 
-    describe command('curl http://localhost:5601/app/kibana') do
-      its(:exit_status) { should eq 0 }
-      its(:stdout) { should include '<title>Kibana</title>' }
+    it 'serves web content' do
+      expect(Net::HTTP.get(URI('http://localhost:5601/app/kibana'))).to contain '<title>Kibana</title>'
     end
   end
 end
