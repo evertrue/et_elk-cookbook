@@ -62,3 +62,18 @@ end
     end
   end
 end
+
+include_recipe 'python'
+python_pip 'elasticsearch-curator'
+
+# Curator job to clean up the old indices
+cron_d 'logstash_curator' do
+  minute 0
+  hour 23
+  command '/usr/local/bin/curator delete indices ' \
+          '--prefix logstash ' \
+          '--timestring %Y.%m.%d ' \
+          "--older-than #{node['et_elk']['logstash']['index_cleanup_days']} " \
+          '--time-unit days ' \
+          '--exclude kibana-int'
+end
