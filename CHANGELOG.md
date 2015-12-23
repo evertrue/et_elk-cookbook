@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [3.0.1] - 2015-12-23
+## Changed
+- Add logstash curator cron job
+
 ## [3.0.0] - 2015-12-22
 ## Changed
 - Cookbook functionality
