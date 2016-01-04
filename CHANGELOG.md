@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [3.0.2] - 2016-01-04
+## Changed
+- Use node.name for x_processed_by field when node fqdn is not available
+
 ## [3.0.1] - 2015-12-23
 ## Changed
 - Add logstash curator cron job
