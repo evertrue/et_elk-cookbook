@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.3.4] - 2016-01-04
+## Changed
+- Correct timestamp parsers for rails_app and nginx_error
+
 ## [2.3.3] - 2015-10-15
 ## Changed
 - Add a Java-type timestamp matcher to the java log filter
