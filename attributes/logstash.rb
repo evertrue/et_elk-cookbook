@@ -8,7 +8,8 @@ default['et_elk']['server']['config']['input']['lumberjack']['ssl_key'] = '/etc/
 default['et_elk']['server']['config']['input']['lumberjack']['host'] = '0.0.0.0'
 default['et_elk']['server']['config']['input']['lumberjack']['port'] = 5043
 default['et_elk']['server']['config']['input']['lumberjack']['codec'] = 'plain'
-default['et_elk']['server']['config']['input']['lumberjack']['add_field']['x_proccessed_by'] = node['fqdn']
+default['et_elk']['server']['config']['input']['lumberjack']['add_field']['x_proccessed_by'] =
+  node['fqdn'] || node.name
 default['et_elk']['server']['config']['input']['lumberjack']['add_field']['x_proccessor_chef_env'] =
   node.chef_environment
 
