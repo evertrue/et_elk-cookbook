@@ -4,6 +4,7 @@ default['et_elk']['elasticsearch']['plugins']['cloud-aws'] = {}
 default['et_elk']['elasticsearch']['custom_config'] = {
   'cloud.node.auto_attributes' => true,
   'cluster.name' => "#{node.chef_environment}-elk",
+  'network.host' => '0.0.0.0',
   'index.number_of_shards' => 3,
   'index.search.slowlog.threshold.query.debug' => '1s',
   'index.search.slowlog.threshold.query.warn' => '5s',
