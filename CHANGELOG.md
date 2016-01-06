@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [3.0.3] - 2016-01-04
+## Changed
+- Set network.host in elasticsearch YAML to a sane value
+
 ## [3.0.2] - 2016-01-04
 ## Changed
 - Use node.name for x_processed_by field when node fqdn is not available
