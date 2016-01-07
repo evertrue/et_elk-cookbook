@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [4.0.0] - 2016-01-07
+## Changed
+- Drop the logstash cookbook
+- Upgrade logstash to version 1:2.1.1-1
+
 ## [3.0.3] - 2016-01-04
 ## Changed
 - Set network.host in elasticsearch YAML to a sane value
