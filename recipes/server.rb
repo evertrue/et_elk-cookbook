@@ -7,5 +7,5 @@
 [
   'et_elk::elasticsearch',
   'et_elk::logstash',
-  'kibana_lwrp::install'
+  'et_elk::kibana'
 ].each { |cb| include_recipe cb }
