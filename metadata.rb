@@ -15,6 +15,4 @@ depends 'runit', '~> 1.5'
 depends 'elasticsearch', '~> 2.1'
 depends 'storage', '~> 2.2'
 
-depends 'logstash', '~> 0.12.0'
-
 depends 'kibana_lwrp', '~> 2.0'

@@ -1,6 +1,4 @@
-default['et_elk']['server']['config']['output']['elasticsearch']['cluster'] = "#{node.chef_environment}-elk"
-default['et_elk']['server']['config']['output']['elasticsearch']['embedded'] = false
-default['et_elk']['server']['config']['output']['elasticsearch']['protocol'] = 'http'
+default['et_elk']['server']['config']['output']['elasticsearch']['hosts'] = '127.0.0.1'
 
 default['et_elk']['server']['config']['input']['lumberjack']['ssl_certificate'] =
   '/etc/logstash/lumberjack.crt.pem'
@@ -24,3 +22,4 @@ default['et_elk']['server']['config']['input'].each_key do |input|
 end
 
 default['et_elk']['logstash']['plugins'] = %w(logstash-filter-alter)
+default['et_elk']['logstash']['version'] = '1:2.1.1-1'
