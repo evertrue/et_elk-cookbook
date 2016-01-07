@@ -32,4 +32,4 @@ suites:
     run_list:
       - recipe[et_elk::server]
       - role[es_master]
-      - recipe[logserver::certs]
+      - recipe[et_elk_postop]
