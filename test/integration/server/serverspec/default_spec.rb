@@ -31,27 +31,27 @@ end
 
 describe 'et_elk::logstash' do
   describe 'it installs logstash' do
-    describe command('/opt/logstash/server/bin/logstash -V') do
+    describe command('/opt/logstash/bin/logstash -V') do
       its(:exit_status) { should eq 0 }
-      its(:stdout) { should match(/logstash 1\.5\.4/) }
+      its(:stdout) { should match(/logstash 2\.1\.1/) }
     end
   end
 
   describe 'logstash is up' do
-    describe service('logstash_server') do
+    describe service('logstash') do
       it { is_expected.to be_running }
       it { is_expected.to be_enabled }
     end
   end
 
-  describe command('/opt/logstash/server/bin/logstash -f ' \
-                   '/opt/logstash/server/etc/conf.d/ --configtest') do
+  describe command('/opt/logstash/bin/logstash -f ' \
+                   '/etc/logstash/conf.d/ --configtest') do
     its(:exit_status) { should eq 0 }
     its(:stdout) { should match(/Configuration OK/) }
   end
 
   describe 'input/output config' do
-    describe file('/opt/logstash/server/etc/conf.d/input_lumberjack') do
+    describe file('/etc/logstash/conf.d/input_lumberjack') do
       it { is_expected.to be_file }
       its(:content) do
         is_expected.to match("input {
@@ -71,7 +71,7 @@ describe 'et_elk::logstash' do
       end
     end
 
-    describe file('/opt/logstash/server/etc/conf.d/input_log4j') do
+    describe file('/etc/logstash/conf.d/input_log4j') do
       it { is_expected.to be_file }
       its(:content) do
         is_expected.to match('input {
@@ -88,14 +88,12 @@ describe 'et_elk::logstash' do
       end
     end
 
-    describe file('/opt/logstash/server/etc/conf.d/output_elasticsearch') do
+    describe file('/etc/logstash/conf.d/output_elasticsearch') do
       it { is_expected.to be_file }
       its(:content) do
         is_expected.to match('output {
   elasticsearch {
-    cluster => "_default-elk"
-    embedded => false
-    protocol => "http"
+    hosts => "127.0.0.1"
   }
 }')
       end
