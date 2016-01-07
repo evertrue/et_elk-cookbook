@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [4.0.1] - 2016-01-07
+## Changed
+- Manage kibana.yml file (by breaking kibana setup back into its own recipe again)
+- Add a test cookbook called et_elk_postop to set up certs and start elasticsearch
+- Update the tests for the new logstash setup
+
 ## [4.0.0] - 2016-01-07
 ## Changed
 - Drop the logstash cookbook
