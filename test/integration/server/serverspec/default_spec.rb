@@ -51,11 +51,12 @@ describe 'et_elk::logstash' do
   end
 
   describe 'input/output config' do
-    describe file('/etc/logstash/conf.d/input_lumberjack') do
+    describe file('/etc/logstash/conf.d/input_beats') do
       it { is_expected.to be_file }
       its(:content) do
         is_expected.to match("input {
-  lumberjack {
+  beats {
+    ssl => true
     ssl_certificate => \"/etc/logstash/lumberjack.crt.pem\"
     ssl_key => \"/etc/logstash/lumberjack.key.pem\"
     host => \"0.0.0.0\"
@@ -64,7 +65,7 @@ describe 'et_elk::logstash' do
     add_field => {
       x_proccessed_by => \"#{`hostname -f`.chomp}\"
       x_proccessor_chef_env => \"_default\"
-      x_input_processor => \"lumberjack\"
+      x_input_processor => \"beats\"
     }
   }
 }")
