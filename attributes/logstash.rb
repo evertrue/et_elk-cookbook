@@ -22,5 +22,5 @@ default['et_elk']['server']['config']['input'].each_key do |input|
   default['et_elk']['server']['config']['input'][input]['add_field']['x_input_processor'] = input
 end
 
-default['et_elk']['logstash']['plugins'] = %w(logstash-filter-alter)
+default['et_elk']['logstash']['plugins'] = %w(logstash-filter-alter logstash-input-beats)
 default['et_elk']['logstash']['version'] = '1:2.1.1-1'
