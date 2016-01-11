@@ -1,5 +1,6 @@
 default['et_elk']['server']['config']['output']['elasticsearch']['hosts'] = '127.0.0.1'
 
+default['et_elk']['server']['config']['input']['beats']['ssl'] = true
 default['et_elk']['server']['config']['input']['beats']['ssl_certificate'] =
   '/etc/logstash/lumberjack.crt.pem'
 default['et_elk']['server']['config']['input']['beats']['ssl_key'] = '/etc/logstash/lumberjack.key.pem'
