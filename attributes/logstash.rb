@@ -1,14 +1,14 @@
 default['et_elk']['server']['config']['output']['elasticsearch']['hosts'] = '127.0.0.1'
 
-default['et_elk']['server']['config']['input']['lumberjack']['ssl_certificate'] =
+default['et_elk']['server']['config']['input']['beats']['ssl_certificate'] =
   '/etc/logstash/lumberjack.crt.pem'
-default['et_elk']['server']['config']['input']['lumberjack']['ssl_key'] = '/etc/logstash/lumberjack.key.pem'
-default['et_elk']['server']['config']['input']['lumberjack']['host'] = '0.0.0.0'
-default['et_elk']['server']['config']['input']['lumberjack']['port'] = 5043
-default['et_elk']['server']['config']['input']['lumberjack']['codec'] = 'plain'
-default['et_elk']['server']['config']['input']['lumberjack']['add_field']['x_proccessed_by'] =
+default['et_elk']['server']['config']['input']['beats']['ssl_key'] = '/etc/logstash/lumberjack.key.pem'
+default['et_elk']['server']['config']['input']['beats']['host'] = '0.0.0.0'
+default['et_elk']['server']['config']['input']['beats']['port'] = 5043
+default['et_elk']['server']['config']['input']['beats']['codec'] = 'plain'
+default['et_elk']['server']['config']['input']['beats']['add_field']['x_proccessed_by'] =
   node['fqdn'] || node.name
-default['et_elk']['server']['config']['input']['lumberjack']['add_field']['x_proccessor_chef_env'] =
+default['et_elk']['server']['config']['input']['beats']['add_field']['x_proccessor_chef_env'] =
   node.chef_environment
 
 default['et_elk']['server']['config']['input']['log4j']['data_timeout'] = 5
