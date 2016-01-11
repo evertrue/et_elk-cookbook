@@ -10,8 +10,6 @@ include_recipe 'storage'
 node.set['et_elk']['elasticsearch']['custom_config']['discovery.zen.ping.unicast.hosts'] =
   search(:node, node['et_elk']['elasticsearch']['search_query']).map(&:ipaddress)
 
-include_recipe 'chef-sugar'
-
 elasticsearch_user 'elasticsearch'
 elasticsearch_install 'elasticsearch'
 
