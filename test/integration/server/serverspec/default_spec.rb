@@ -23,7 +23,7 @@ describe 'et_elk::elasticsearch' do
       end
 
       it 'has the right version' do
-        expect(JSON.parse(es_api_response.body)['version']['number']).to eq('2.1.0')
+        expect(JSON.parse(es_api_response.body)['version']['number']).to eq('2.1.1')
       end
     end
   end
