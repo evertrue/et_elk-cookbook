@@ -6,7 +6,7 @@
 
 apt_repository 'logstash' do
   uri 'http://packages.elastic.co/logstash/2.1/debian'
-  distribution "#{node['lsb_codename']}"
+  distribution node['lsb_codename']
   components %w(stable main)
   deb_src false
   key 'https://packages.elastic.co/GPG-KEY-elasticsearch'

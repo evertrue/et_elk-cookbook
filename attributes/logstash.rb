@@ -3,7 +3,8 @@ default['et_elk']['server']['config']['output']['elasticsearch']['hosts'] = '127
 default['et_elk']['server']['config']['input']['beats']['ssl'] = true
 default['et_elk']['server']['config']['input']['beats']['ssl_certificate'] =
   '/etc/logstash/lumberjack.crt.pem'
-default['et_elk']['server']['config']['input']['beats']['ssl_key'] = '/etc/logstash/lumberjack.key.pem'
+default['et_elk']['server']['config']['input']['beats']['ssl_key'] =
+  '/etc/logstash/lumberjack.key.pem'
 default['et_elk']['server']['config']['input']['beats']['host'] = '0.0.0.0'
 default['et_elk']['server']['config']['input']['beats']['port'] = 5043
 default['et_elk']['server']['config']['input']['beats']['codec'] = 'plain'
