@@ -116,7 +116,8 @@ describe 'et_elk::server' do
     end
 
     it 'serves web content' do
-      expect(Net::HTTP.get(URI('http://localhost:5601/app/kibana'))).to contain '<title>Kibana</title>'
+      expect(Net::HTTP.get(URI('http://localhost:5601/app/kibana')))
+        .to contain '<title>Kibana</title>'
     end
   end
 end
