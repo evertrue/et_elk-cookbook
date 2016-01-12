@@ -2,6 +2,7 @@ language: ruby
 rvm: 2.2
 sudo: required
 cache:
+  apt: true
   directories:
   - "$HOME/.berkshelf"
 env:
