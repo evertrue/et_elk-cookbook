@@ -4,10 +4,6 @@ sudo: required
 cache:
   directories:
   - "$HOME/.berkshelf"
-addons:
-  apt:
-    sources:
-    - chef-stable-precise
 env:
   matrix:
   - INSTANCE: server
