@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [5.0.0] - 2016-01-12
+## Changed
+- Migrate to filebeats
+
 ## [4.0.1] - 2016-01-07
 ## Changed
 - Manage kibana.yml file (by breaking kibana setup back into its own recipe again)
