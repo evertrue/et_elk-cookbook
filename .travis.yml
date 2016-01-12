@@ -8,8 +8,8 @@ addons:
   apt:
     sources:
     - chef-stable-precise
-#     packages:
-#     - chefdk
+    packages:
+    - chefdk
 env:
   matrix:
   - INSTANCE: server
@@ -24,12 +24,6 @@ before_install:
 - echo 'node_name "trubot"' >> ~/.chef/knife.rb
 - chmod 600 ~/.ssh/travis_ci_ec2.pem
 - cp ~/.ssh/travis_ci_ec2.pem ~/.ssh/id_rsa
-- sudo apt-get update
-- sudo apt-get purge -y chefdk
-- sudo apt-get install --reinstall chefdk
-- dpkg -l chefdk
-- chef --version
-- ls
 install:
 - eval "$(chef shell-init bash)"
 - chef gem install kitchen-ec2
