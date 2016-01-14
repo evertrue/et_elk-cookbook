@@ -13,6 +13,7 @@ platforms:
 suites:
   - name: server
     run_list:
+      - recipe[et_elk_preop]
       - recipe[et_elk::server]
       - role[es_master]
       - recipe[et_elk_postop]

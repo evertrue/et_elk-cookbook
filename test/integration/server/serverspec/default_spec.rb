@@ -70,6 +70,10 @@ describe 'et_elk::logstash' do
   }
 }")
       end
+
+      describe file('/etc/logstash/conf.d/filter_deleteme') do
+        it { is_expected.to_not be_file }
+      end
     end
 
     describe file('/etc/logstash/conf.d/input_log4j') do
