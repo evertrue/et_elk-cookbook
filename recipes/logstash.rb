@@ -50,3 +50,15 @@ node['et_elk']['server']['config'].each do |type, type_conf|
     end
   end
 end
+
+# Remove vestigial config files
+%w(input output filter).each do |type|
+  Dir.glob("/etc/logstash/conf.d/#{type}_*").each do |dir_entry|
+    module_name = File.basename(dir_entry).sub("#{type}_", '')
+    file dir_entry do
+      action :delete
+      notifies :restart, 'service[logstash]'
+      not_if { node['et_elk']['server']['config'].fetch(type, {})[module_name] }
+    end
+  end
+end
