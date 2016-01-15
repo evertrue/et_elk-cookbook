@@ -1,12 +1,12 @@
 # Kibana is served by a backend server. This controls which port to use.
-port: 5601
+port: <%= @port %>
 
 # The Elasticsearch instance to user for all your queries
-elasticsearch_url: "http://localhost:9200"
+elasticsearch_url: "<%= @elasticsearch %>"
 
 # Kibana uses and index in Elasticsearch to store saved searches, visualizations
 # and dashboard. It will create an new index if it doesn't already exist.
-kibana_index: "kibana-int"
+kibana_index: "<%= @index %>"
 
 # The default application to load.
 default_app_id: "discover"
@@ -14,10 +14,6 @@ default_app_id: "discover"
 # Time in milliseconds to wait for responses from the back end or elasticsearch.
 # This must be > 0
 request_timeout: 60000
-
-# Disable usage of the XSRF token (See https://github.com/elastic/kibana/issues/5574
-# for why it's superfluous).
-server.xsrf.disableProtection: true
 
 # Time in milliseconds for Elasticsearch to wait for responses from shards.
 # Note this should always be lower than "request_timeout".
@@ -35,3 +31,7 @@ bundled_plugin_ids:
  - plugins/table_vis/index
  - plugins/vis_types/index
  - plugins/visualize/index
+
+# Disable usage of the XSRF token (See https://github.com/elastic/kibana/issues/5574
+# for why it's superfluous).
+server.xsrf.disableProtection: true
