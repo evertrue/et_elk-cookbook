@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [5.0.2] - 2016-01-15
+## Changed
+- Can't delete vestigial filter config files because we don't manage those with attributes
+
 ## [5.0.1] - 2016-01-14
 ## Changed
 - Remove vestigial config files
