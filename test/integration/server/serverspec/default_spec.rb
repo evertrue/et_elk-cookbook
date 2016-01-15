@@ -124,4 +124,9 @@ describe 'et_elk::server' do
         .to contain '<title>Kibana</title>'
     end
   end
+
+  describe file('/opt/kibana/current/config/kibana.yml') do
+    it { is_expected.to be_file }
+    it { is_expected.to contain('server.xsrf.disableProtection: true') }
+  end
 end
