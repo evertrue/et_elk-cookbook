@@ -7,8 +7,7 @@ directory '/etc/logstash/conf.d' do
   action :nothing
 end.run_action(:create)
 
-file 'create /etc/logstash/conf.d/filter_deleteme' do
-  path '/etc/logstash/conf.d/filter_deleteme'
-  content "filter {}\n"
+cookbook_file 'create /etc/logstash/conf.d/output_deleteme' do
+  path '/etc/logstash/conf.d/output_deleteme'
   action :nothing
 end.run_action(:create)

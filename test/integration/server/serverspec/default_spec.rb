@@ -71,7 +71,7 @@ describe 'et_elk::logstash' do
 }")
       end
 
-      describe file('/etc/logstash/conf.d/filter_deleteme') do
+      describe file('/etc/logstash/conf.d/output_deleteme') do
         it { is_expected.to_not be_file }
       end
     end
