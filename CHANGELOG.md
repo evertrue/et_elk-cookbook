@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [5.1.0] - 2016-01-18
+## Changed
+- Add index curation cron job
+
 ## [5.0.3] - 2016-01-16
 ## Changed
 - Modify kibana yaml template instead of installing cookbook_file
