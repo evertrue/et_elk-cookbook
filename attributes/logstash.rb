@@ -25,3 +25,4 @@ end
 
 default['et_elk']['logstash']['plugins'] = %w(logstash-filter-alter logstash-input-beats)
 default['et_elk']['logstash']['version'] = '1:2.1.1-1'
+default['et_elk']['logstash']['index_cleanup_days'] = 30
