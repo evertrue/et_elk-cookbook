@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [2.3.5] - 2016-01-19
+## Fixed
+- HOTFIX:
+    + Use version 3.0 of the elk_forwarder cookbook
+    + Don't run the client recipe as part of the server recipe O_o
+
 ## [2.3.4] - 2016-01-04
 ## Changed
 - Correct timestamp parsers for rails_app and nginx_error
