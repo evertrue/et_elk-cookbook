@@ -11,7 +11,6 @@ supports 'ubuntu', '>= 14.04'
 depends 'apt', '~> 2.0'
 depends 'java', '~> 1.0'
 depends 'runit', '~> 1.5'
-depends 'python'
 depends 'cron'
 
 depends 'elasticsearch', '= 2.1.1'
