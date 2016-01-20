@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [5.1.1] - 2016-01-20
+## Changed
+- Install Curator with PPA and move to separate recipe
+
 ## [5.1.0] - 2016-01-18
 ## Changed
 - Add index curation cron job
