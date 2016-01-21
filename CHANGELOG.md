@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [5.1.2] - 2016-01-20
+## Changed
+- Oops, % must be escaped in crontabs
+
 ## [5.1.1] - 2016-01-20
 ## Changed
 - Install Curator with PPA and move to separate recipe
