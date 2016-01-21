@@ -15,7 +15,7 @@ cron_d 'logstash_curator' do
   hour 23
   command '/usr/local/bin/curator delete indices ' \
           '--prefix logstash ' \
-          '--timestring %Y.%m.%d ' \
+          '--timestring \%Y.\%m.\%d ' \
           "--older-than #{node['et_elk']['logstash']['index_cleanup_days']} " \
           '--time-unit days ' \
           '--exclude kibana-int'
