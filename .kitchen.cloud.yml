@@ -9,10 +9,11 @@ driver:
   instance_type: c3.2xlarge
   interface: public
   tags:
-    Name: et_elk-ubuntu-1404
     Type: test
+    Env: public
 
 transport:
+  name: sftp
   ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
 
 provisioner:
@@ -22,13 +23,11 @@ provisioner:
 
 platforms:
   - name: ubuntu-14.04
-    driver_config:
-      image_id: ami-92f569fa
-      tags:
-        Env: public
 
 suites:
   - name: server
+    tags:
+      Name: et-elk-ubuntu-1404
     run_list:
       - recipe[et_elk_preop]
       - recipe[et_elk::server]
