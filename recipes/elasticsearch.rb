@@ -39,6 +39,12 @@ elasticsearch_service 'elasticsearch'
 # PLUGINS
 #
 
+if node['platform_family'] == 'debian'
+  execute 'update-ca-certificates' do
+    command 'update-ca-certificates -f'
+  end
+end
+
 node['et_elk']['elasticsearch']['plugins'].each do |plugin_name, plugin_conf|
   elasticsearch_plugin plugin_name do
     if plugin_conf['url']
