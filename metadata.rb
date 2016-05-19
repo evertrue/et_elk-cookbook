@@ -13,7 +13,7 @@ depends 'java', '~> 1.0'
 depends 'runit', '~> 1.5'
 depends 'cron'
 
-depends 'elasticsearch', '= 2.1.1'
+depends 'elasticsearch', '= 2.3.1'
 depends 'storage', '~> 2.2'
 
-depends 'kibana_lwrp', '~> 2.0'
+depends 'kibana_lwrp', '~> 3.0'
