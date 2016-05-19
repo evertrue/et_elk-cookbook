@@ -22,7 +22,7 @@ before_install:
 - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
 install:
 - eval "$(chef shell-init bash)"
-- chef gem install kitchen-ec2
+- chef gem install kitchen-ec2 kitchen-sync
 - berks
 before_script:
 - rubocop --version
@@ -30,4 +30,7 @@ before_script:
 script:
 - rubocop
 - foodcritic .
-- "kitchen test ${INSTANCE} -d always"
+- kitchen test ${INSTANCE} -d always
+notifications:
+  slack:
+    secure: CBMLEHgq9ckCc+odhjTYhYz+1J/k/ediarv9dCNEpequR/3eiZgPBP7JIK6X5GYfy8Kv3zxswShPAteA1qnPY1RemFx0NORJiv4VGmo/479DF1C1tdqMAcy3qv1IF08X55U3CuuixHqgwjz8Lf3SD+dOY+CRhQpDXsj74nHR37Qo5+T5VY9Gdgib5g988nY389iDuwCy1I6s3M+1vr5a9M2beobp+va2XKgpSNPOe8cnZeB6Wbt/wpycbHlQGt5FCu7OmN9OJqX+UPsFSqVbTZBX0k1FLapJXCFLMzGDQFivuU27nTPTt8pp3vFdXMFMxtl92Pgt9Ksc0XomRh8ZrGhXL1Ye8R+0AiXhGEEJn/Z7+Ke4O2PUzMwD463stUaZTkmIWF68igJip91oJK1Y5/tIC8Dz3+ipeZQ5fpmqwC/cMq0AamH79pjoVs27Tui0+kdVM3WBWCoR1VbqkhcY6l9z7QdNv5x4Ti9X37PrFicoq6XdyJRJC6eX40sunagSVdDTHRLCULjJ1GsXN2/D8CxFC78W2uRM6EVOMx4Hy7+C2AaYz1Slt1AE5LRONnerqAe0Sj5BB0+mGp5BsigEWkdiXwsZQW9EtRD/wMBr6S1sFkcJjgAZ+qodUcARRPi5Ogr9SE6gcNJZhaIQBFDfreslXrCShFDP3gevfFkpanE=
