@@ -20,3 +20,4 @@ default['et_elk']['elasticsearch']['search_query'] =
   'et_elk_elasticsearch_custom_config_cluster.name:' \
   "#{node['et_elk']['elasticsearch']['custom_config']['cluster.name']} AND " \
   'roles:es_master'
+default['et_elk']['storage_type'] = 'ebs'
