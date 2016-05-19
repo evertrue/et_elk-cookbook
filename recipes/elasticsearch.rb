@@ -22,14 +22,15 @@ elasticsearch_install 'elasticsearch'
 #
 
 # The complicated logic of figuring out where we're going to put all this data
-if node['et_elk']['storage_type'] == 'ebs'
-  unless node['storage']['ebs_mounts']
-    fail 'Selected storage type is ebs but no mounts are available'
+mounts =
+  if node['et_elk']['storage_type'] == 'ebs'
+    unless node['storage']['ebs_mounts']
+      raise 'Selected storage type is ebs but no mounts are available'
+    end
+    node['storage']['ebs_mounts']
+  elsif node['storage']['ephemeral_mounts']
+    node['storage']['ephemeral_mounts']
   end
-  mounts = node['storage']['ebs_mounts']
-elsif node['storage']['ephemeral_mounts']
-  mounts = node['storage']['ephemeral_mounts']
-end
 
 elasticsearch_configure 'elasticsearch' do
   allocated_memory "#{(node['memory']['total'].to_i * 0.4).floor / 1024}m"
