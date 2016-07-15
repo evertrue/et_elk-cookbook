@@ -8,6 +8,7 @@ driver:
   security_group_ids: ['ci-testing']
   instance_type: c3.2xlarge
   interface: public
+  iam_profile_name: test-ebs-attachment
   tags:
     Type: test
     Env: public
@@ -33,3 +34,10 @@ suites:
       - recipe[et_elk::server]
       - role[es_master]
       - recipe[et_elk_postop]
+    attributes:
+      storage:
+        ebs_volumes:
+          vol1:
+            device: /dev/xvde
+            size: 2
+            delete_on_termination: true

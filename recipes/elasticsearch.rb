@@ -21,16 +21,20 @@ elasticsearch_install 'elasticsearch'
 # CONFIGURATION
 #
 
+# The complicated logic of figuring out where we're going to put all this data
+mounts =
+  if node['et_elk']['storage_type'] == 'ebs'
+    unless node['storage']['ebs_mounts']
+      raise 'Selected storage type is ebs but no mounts are available'
+    end
+    node['storage']['ebs_mounts']
+  elsif node['storage']['ephemeral_mounts']
+    node['storage']['ephemeral_mounts']
+  end
+
 elasticsearch_configure 'elasticsearch' do
   allocated_memory "#{(node['memory']['total'].to_i * 0.4).floor / 1024}m"
-  if node['storage']['ephemeral_mounts'] &&
-     node['storage']['ephemeral_mounts'].any?
-    path_data(
-      package: node['storage']['ephemeral_mounts'].map do |mount|
-        "#{mount}/elasticsearch/data"
-      end.sort.join(',')
-    )
-  end
+  path_data(package: mounts.map { |mount| "#{mount}/elasticsearch/data" }.sort.join(',')) if mounts
   configuration node['et_elk']['elasticsearch']['custom_config']
 end
 elasticsearch_service 'elasticsearch'
