@@ -5,7 +5,7 @@
 # Copyright (c) 2015 EverTrue, inc, All Rights Reserved.
 
 if Chef::Config[:solo]
-  fail 'This recipe requires Search which is not available on Chef Solo'
+  raise 'This recipe requires Search which is not available on Chef Solo'
 end
 
 include_recipe 'java'
