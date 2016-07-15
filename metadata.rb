@@ -17,3 +17,4 @@ depends 'elasticsearch', '= 2.3.1'
 depends 'storage', '~> 2.2'
 
 depends 'kibana_lwrp', '~> 3.0'
+depends 'nginx', '>= 2.0'
