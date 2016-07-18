@@ -8,7 +8,6 @@ version          '5.1.2'
 
 supports 'ubuntu', '>= 14.04'
 
-depends 'apt', '~> 2.0'
 depends 'java', '~> 1.0'
 depends 'runit', '~> 1.5'
 depends 'cron'
