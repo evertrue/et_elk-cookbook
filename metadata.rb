@@ -13,7 +13,7 @@ depends 'runit', '~> 1.5'
 depends 'cron'
 
 depends 'elasticsearch', '= 2.3.1'
-depends 'storage', '~> 3.0'
+depends 'storage', '~> 5.0'
 
 depends 'kibana_lwrp', '~> 3.0'
 depends 'nginx', '>= 2.0'
