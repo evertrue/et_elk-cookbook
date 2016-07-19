@@ -5,6 +5,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [6.0.0] - 2016-07-19
+## Changed
+- Bump storage cookbook to v5
+- Use native apt
+- Test only on ec2
+- Enable the use of EBS for data store
+- Bump ES and Kibana versions
+
+## Fixed
+- Run update-ca-certificates to fix plugin install over ssl issue
+- Restrict nginx to >= 2.0 to get around ohai bug
+
 ## [5.1.2] - 2016-01-20
 ## Changed
 - Oops, % must be escaped in crontabs
