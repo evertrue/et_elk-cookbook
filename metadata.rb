@@ -15,4 +15,4 @@ depends 'cron'
 depends 'elasticsearch', '= 2.3.1'
 depends 'storage', '~> 5.0'
 
-depends 'kibana_lwrp', '~> 3.0'
+depends 'et_kibana_lwrp', '~> 1.0'
