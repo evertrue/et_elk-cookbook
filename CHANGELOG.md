@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [6.0.1] - 2016-09-23
+## Fixed
+- Switch to the Evertrue fork of the Kibana LWRP cookbook (Gets us access to the fix for miketheman/nginx#409)
+
 ## [6.0.0] - 2016-07-19
 ## Changed
 - Bump storage cookbook to v5
