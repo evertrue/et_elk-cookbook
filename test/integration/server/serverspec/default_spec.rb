@@ -23,7 +23,7 @@ describe 'et_elk::elasticsearch' do
       end
 
       it 'has the right version' do
-        expect(JSON.parse(es_api_response.body)['version']['number']).to eq('2.3.2')
+        expect(JSON.parse(es_api_response.body)['version']['number']).to eq('2.4.0')
       end
     end
   end
@@ -110,7 +110,7 @@ describe 'et_elk::server' do
   describe 'it installs kibana' do
     describe command('/opt/kibana/current/bin/kibana -V') do
       its(:exit_status) { should eq 0 }
-      its(:stdout) { should include '4.3.0' }
+      its(:stdout) { should include '4.6.2' }
     end
   end
 
