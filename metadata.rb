@@ -1,6 +1,6 @@
 name             'et_elk'
 maintainer       'EverTrue, inc.'
-maintainer_email 'eddie.hurtig@evertrue.com'
+maintainer_email 'devops+cookbooks@evertrue.com'
 license          'apache2'
 description      'Configures an Elk Cluster'
 long_description 'Installs/Configures elk'
