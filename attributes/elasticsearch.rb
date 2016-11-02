@@ -11,6 +11,8 @@ default['et_elk']['elasticsearch']['custom_config'] = {
   'indices.memory.index_buffer_size' => '50%',
   'indices.breaker.fielddata.limit' => '65%',
   'indices.fielddata.cache.size' => '55%',
+  'indices.recovery.max_bytes_per_sec' => '250mb',
+  'indices.store.throttle.max_bytes_per_sec' => '250mb',
   'index.translog.flush_threshold_ops' => 50_000,
   'node.data' => true
 }
