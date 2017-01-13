@@ -18,11 +18,20 @@ default['et_elk']['server']['config']['input']['log4j']['host'] = '0.0.0.0'
 default['et_elk']['server']['config']['input']['log4j']['mode'] = 'server'
 default['et_elk']['server']['config']['input']['log4j']['port'] = 5044
 
+default['et_elk']['server']['config']['input']['tcp']['codec'] = 'fluent'
+default['et_elk']['server']['config']['input']['tcp']['host'] = '0.0.0.0'
+default['et_elk']['server']['config']['input']['tcp']['mode'] = 'server'
+default['et_elk']['server']['config']['input']['tcp']['port'] = 5045
+
 # All input processors should leave tags indicating their names
 default['et_elk']['server']['config']['input'].each_key do |input|
   default['et_elk']['server']['config']['input'][input]['add_field']['x_input_processor'] = input
 end
 
-default['et_elk']['logstash']['plugins'] = %w(logstash-filter-alter logstash-input-beats)
+default['et_elk']['logstash']['plugins'] = %w(
+  logstash-filter-alter
+  logstash-input-beats
+  logstash-codec-fluent
+  logstash-input-tcp )
 default['et_elk']['logstash']['version'] = '1:2.1.1-1'
 default['et_elk']['logstash']['index_cleanup_days'] = 30

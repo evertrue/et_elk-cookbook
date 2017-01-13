@@ -93,6 +93,23 @@ describe 'et_elk::logstash' do
       end
     end
 
+    describe file('/etc/logstash/conf.d/input_tcp') do
+      it { is_expected.to be_file }
+      its(:content) do
+        is_expected.to match('input {
+  tcp {
+    codec => "fluent"
+    host => "0.0.0.0"
+    mode => "server"
+    port => 5045
+    add_field => {
+      x_input_processor => "tcp"
+    }
+  }
+}')
+      end
+    end
+
     describe file('/etc/logstash/conf.d/output_elasticsearch') do
       it { is_expected.to be_file }
       its(:content) do
