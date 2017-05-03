@@ -34,7 +34,7 @@ mounts =
 
 elasticsearch_configure 'elasticsearch' do
   allocated_memory "#{(node['memory']['total'].to_i * 0.4).floor / 1024}m"
-  path_data(package: mounts.map { |mount| "#{mount}/elasticsearch/data" }.sort.join(',')) if mounts
+  path_data mounts.map { |mount| "#{mount}/elasticsearch/data" }.sort.join(',') if mounts
   configuration node['et_elk']['elasticsearch']['custom_config']
 end
 elasticsearch_service 'elasticsearch'
