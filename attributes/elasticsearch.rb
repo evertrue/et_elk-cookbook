@@ -1,5 +1,8 @@
-default['et_elk']['elasticsearch']['plugins']['hq']['url'] = 'royrusso/elasticsearch-HQ'
 default['et_elk']['elasticsearch']['plugins']['head']['url'] = 'mobz/elasticsearch-head'
+default['et_elk']['elasticsearch']['plugins']['kopf'] = {
+  'url' => 'lmenezes/elasticsearch-kopf',
+  'version' => '2.0'
+}
 default['et_elk']['elasticsearch']['plugins']['cloud-aws'] = {}
 default['et_elk']['elasticsearch']['custom_config'] = {
   'cloud.node.auto_attributes' => true,
