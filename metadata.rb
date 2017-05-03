@@ -16,3 +16,4 @@ depends 'elasticsearch', '= 2.4.0'
 depends 'storage', '~> 5.0'
 
 depends 'et_kibana_lwrp', '~> 1.0'
+depends 'apt'
