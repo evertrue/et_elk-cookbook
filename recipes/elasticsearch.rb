@@ -5,7 +5,7 @@
 # Copyright (c) 2015 EverTrue, inc, All Rights Reserved.
 
 if Chef::Config[:solo]
-  raise 'This recipe requires Search which is not available on Chef Solo'
+  fail 'This recipe requires Search which is not available on Chef Solo'
 end
 
 include_recipe 'java'
@@ -25,7 +25,7 @@ elasticsearch_install 'elasticsearch'
 mounts =
   if node['et_elk']['storage_type'] == 'ebs'
     unless node['storage']['ebs_mounts']
-      raise 'Selected storage type is ebs but no mounts are available'
+      fail 'Selected storage type is ebs but no mounts are available'
     end
     node['storage']['ebs_mounts']
   elsif node['storage']['ephemeral_mounts']
