@@ -35,6 +35,14 @@ end
 ####################
 #  Inputs/Outputs  #
 ####################
+db = data_bag_item('secrets', 'aws_credentials')
+if db["logstash-#{node.chef_environment}"]
+  node.default['et_elk']['server']['config']['input']['s3']['access_key_id'] =
+    creds['access_key_id']
+  node.default['et_elk']['server']['config']['input']['s3']['secret_access_key'] =
+    creds['secret_access_key']
+end
+
 node['et_elk']['server']['config'].each do |type, type_conf|
   type_conf.each do |module_name, module_conf|
     template "/etc/logstash/conf.d/#{type}_#{module_name}" do
