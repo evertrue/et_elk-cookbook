@@ -18,6 +18,13 @@ default['et_elk']['server']['config']['input']['log4j']['host'] = '0.0.0.0'
 default['et_elk']['server']['config']['input']['log4j']['mode'] = 'server'
 default['et_elk']['server']['config']['input']['log4j']['port'] = 5044
 
+default['et_elk']['server']['config']['input']['s3'] = {
+  'bucket' => 'et-logstash',
+  'prefix' => "logs/#{node.chef_environment}",
+  'delete' => true,
+  'region' => node['ec2']['placement_availability_zone'][0..-2]
+}
+
 # All input processors should leave tags indicating their names
 default['et_elk']['server']['config']['input'].each_key do |input|
   default['et_elk']['server']['config']['input'][input]['add_field']['x_input_processor'] = input

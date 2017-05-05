@@ -4,7 +4,7 @@ maintainer_email 'devops+cookbooks@evertrue.com'
 license          'apache2'
 description      'Configures an Elk Cluster'
 long_description 'Installs/Configures elk'
-version          '6.1.1'
+version          '6.2.0'
 
 supports 'ubuntu', '>= 14.04'
 
@@ -16,3 +16,4 @@ depends 'elasticsearch', '~> 3.0'
 depends 'storage', '~> 6.0'
 
 depends 'et_kibana_lwrp', '~> 2.0'
+depends 'apt'
