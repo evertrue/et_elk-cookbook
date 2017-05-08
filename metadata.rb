@@ -13,7 +13,7 @@ depends 'runit', '~> 1.5'
 depends 'cron'
 
 depends 'elasticsearch', '= 2.4.0'
-depends 'storage', '~> 5.0'
+depends 'storage', '~> 6.0'
 
 depends 'et_kibana_lwrp', '~> 1.0'
 depends 'apt'
