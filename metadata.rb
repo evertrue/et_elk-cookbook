@@ -15,5 +15,5 @@ depends 'cron'
 depends 'elasticsearch', '~> 3.0'
 depends 'storage', '~> 6.0'
 
-depends 'et_kibana_lwrp', '~> 2.0'
+# depends 'et_kibana_lwrp', '~> 2.0'
 depends 'apt'
