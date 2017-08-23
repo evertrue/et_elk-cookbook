@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [6.2.1] - 2016-10-28
+## Fixed
+- Update broken reference to the et_kibana_lwrp recipe
+
 ## [6.1.0] - 2016-10-28
 ## Fixed
 - Switch to "Releases" changelog model
@@ -116,7 +120,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Changed
 - Set flag x_input_processor on all inputs
 
-## 
+##
 
 ## [2.3.1] - 2015-10-15
 ## Changed
